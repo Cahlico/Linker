@@ -5,10 +5,12 @@ import { Link, useHistory } from 'react-router-dom';
 import { Container, LoginTitle, LoginInfo } from '../styles/login';
 import UserContext from '../contexts/UserContext';
 
-export default function Login() {
+export default function SignUp() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [pictureUrl, setPictureUrl] = useState('');
     const [clicked, setClicked] = useState(false);
     const { userInfo, setUserInfo } = useContext(UserContext);
     const history = useHistory();
@@ -16,24 +18,26 @@ export default function Login() {
     function sendRequest(event) {
         event.preventDefault();
 
-        if(clicked) return;
+        if(clicked)  return;
 
-        if(email === '' || password === '') {
+        if(email === '' || password === '' || username === '' || pictureUrl === '') {
             alert('Por favor, preencha todos os campos');
             return;
         }
 
+        //https://pm1.narvii.com/6055/c57c6dd83178676ae35485d77bd40ffb5b34ccf6_hq.jpg
+
         setClicked(true);
 
-        const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/sign_in', { email, password });
+        const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/sign_up', { email, password, username, pictureUrl });
 
         request.then(response => {
             const data = response.data;
-            setUserInfo({ ...userInfo, data });
+            setUserInfo({...userInfo, data});
             history.push('/Timeline');
         });
 
-        request.catch(() => alert('E-mail ou senha incorretos'));
+        request.catch(() => alert('E-mail inserido já cadastrado'));
     }
 
     return (
@@ -55,8 +59,20 @@ export default function Login() {
                     value={password} 
                     placeholder='password'
                 />
+                <input 
+                    type='text'
+                    onChange={e => setUsername(e.target.value)} 
+                    value={username} 
+                    placeholder='username'
+                />
+                <input 
+                    type='url'
+                    onChange={e => setPictureUrl(e.target.value)} 
+                    value={pictureUrl} 
+                    placeholder='picture url'
+                />
                 <button type='submit'>Log In</button>
-                <Link to='/SignUp'>First time? Create an account!</Link>
+                <Link to='/Login'>Switch back to log in</Link>
             </LoginInfo>
         </Container>
     );

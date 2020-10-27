@@ -23,7 +23,7 @@ export const LoginTitle = styled.div`
     }
 `;
 
-export const LoginInfo = styled.div`
+export const LoginInfo = styled.form`
     width: 35vw;
     height: 100vh;
     padding: 32vh 5%;
