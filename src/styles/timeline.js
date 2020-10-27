@@ -38,7 +38,7 @@ export const HeaderContainer = styled.header `
 `
 
 export const MainContainer = styled.main `
-    padding: 0px 10vw;
+    padding: 100px 10vw;
     display: flex;
     font-family: 'Lato',sans-serif;
     flex-direction: column;
@@ -99,7 +99,8 @@ export const InputContainer = styled.article `
         padding: 5px;
         border-radius: 4px;
         font-family:inherit;
-        font-size:15px;
+        font-size:15px;        
+        font-weight:300;
     }
 
     div div {
@@ -121,3 +122,20 @@ export const InputContainer = styled.article `
         cursor: pointer;
     }
 `
+
+export const TrendContainer = styled.aside ` 
+    width:200px;
+    height:200px;
+    background:white;
+    position: fixed;
+    right: 60px;
+
+`
+
+
+
+
+
+
+
+
