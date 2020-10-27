@@ -4,12 +4,13 @@ import UserContext from '../contexts/UserContext';
 
 import Header from '../components/Header';
 import InputPost from '../components/InputPost';
+import PostList from '../components/PostList';
 
 import { MainContainer } from '../styles/timeline'
 
 export default function Timeline() {
-    const data = useContext(UserContext);
-    const { userInfo } = data;
+    const { userInfo } = useContext(UserContext);
+    const userData = userInfo.data
 
     return (
         <>
@@ -18,6 +19,7 @@ export default function Timeline() {
                 <h1>timeline</h1>
                 <InputPost/>
             </MainContainer>
+            <PostList userData={userData} />
         </>
     )
 }
