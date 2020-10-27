@@ -36,6 +36,7 @@ export default function PostList(props) {
                                 linkDescription={post.linkDescription}
                                 linkTitle={post.linkTitle}
                                 text={post.text}
+                                user={post.user}
                                 key={post.id}
                             />
                         ))

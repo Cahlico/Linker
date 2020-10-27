@@ -6,8 +6,8 @@ import InputPost from '../components/InputPost';
 import { MainContainer } from '../styles/timeline'
 
 export default function HashtagPage() {
-    const data = useContext(UserContext);
-    const { userInfo } = data;
+    const { userInfo } = useContext(UserContext);
+    const userData = userInfo.data
 
     return (
         <>
