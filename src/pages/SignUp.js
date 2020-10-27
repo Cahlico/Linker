@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
-import { Container, LoginTitle, LoginInfo } from '../styles/login';
+import { Container, LoginTitle, LoginInfo } from '../styles/styledLogin';
 import UserContext from '../contexts/UserContext';
 
 export default function SignUp() {

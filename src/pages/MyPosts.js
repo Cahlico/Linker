@@ -7,7 +7,7 @@ import InputPost from '../components/InputPost';
 
 import { MainContainer } from '../styles/timeline'
 
-export default function Timeline() {
+export default function MyPosts() {
     const data = useContext(UserContext);
     const { userInfo } = data;
 
@@ -15,10 +15,8 @@ export default function Timeline() {
         <>
             <Header/>
             <MainContainer>
-                <h1>timeline</h1>
-                <InputPost/>
+                <h1>MyPosts</h1>
             </MainContainer>
         </>
     )
 }
-

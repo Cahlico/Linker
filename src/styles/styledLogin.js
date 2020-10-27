@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
+
+    @media (max-width: 600px) {
+        display: block;
+    }
 `;
 
 export const LoginTitle = styled.div`
@@ -20,6 +24,21 @@ export const LoginTitle = styled.div`
 
     h2 {
         font-size: 43px;
+    }
+
+    @media (max-width: 600px) {
+        padding: 5vw;
+        width: 100vw;
+        height: 35vh;
+        text-align: center;
+
+        h1 {
+            font-size: 24vw;
+        }
+
+        h2 {
+            font-size: 10vw;
+        }
     }
 `;
 
@@ -51,5 +70,15 @@ export const LoginInfo = styled.form`
         color: #FFF;
         font-size: 14px;
         display: block;
+    }
+
+    @media (max-width: 600px) {
+        height: 65vw;
+        padding: 10vw 5vw;
+        width: 100vw;
+
+        input, button {
+
+        }
     }
 `;
