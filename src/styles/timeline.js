@@ -38,31 +38,37 @@ export const HeaderContainer = styled.header `
 `
 
 export const MainContainer = styled.main `
-    padding: 0px 15vw;
-    font-family:'Lato', sans-serif;
+    padding: 0px 10vw;
+    display: flex;
+    font-family: 'Lato',sans-serif;
+    flex-direction: column;
+    align-items: flex-start;
 
     & > h1 {
         color:white;
         font-weight:bold;
         font-size:43px;
         font-family: 'Oswald' , sans-serif;
+        margin-bottom:25px; 
     }
 
-    & > div {
-        background: black;
-        display:flex;
-        height: 200px;
-        padding: 12px 20px;
-    }
+`
 
-    & > div h1 {
+export const InputContainer = styled.article `
+
+    background: black;
+    display:flex;
+    padding: 12px 20px;
+    border-radius: 12px; 
+
+    h1 {
         color:#707070;
         font-weight:300;
         font-size:20px;
         margin-bottom:10px;
     }
 
-    & > div img {
+    img {
         width:53px;
         height:53px;
         border-radius:50%;
@@ -70,7 +76,7 @@ export const MainContainer = styled.main `
 
     }
 
-    & > div input {
+    input {
         background: #EFEFEF;
         font-size:15px;
         font-family:inherit;
@@ -84,7 +90,7 @@ export const MainContainer = styled.main `
 
     }
 
-    & > div textarea {
+    textarea {
         outline:none;
         border:none;
         background: #EFEFEF;
@@ -92,10 +98,26 @@ export const MainContainer = styled.main `
         resize: none;
         padding: 5px;
         border-radius: 4px;
-
+        font-family:inherit;
+        font-size:15px;
     }
 
-    & div > div {
-        width: 100%;
+    div div {
+        display:flex;
+        justify-content:flex-end;
+    }
+
+    button {
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        padding: 5px 20px;
+        background: #1877F2;
+        color: white;
+        border-radius: 5px;
+        margin-top: 5px;
+        outline: none;
+        cursor: pointer;
     }
 `

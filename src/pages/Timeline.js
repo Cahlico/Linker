@@ -10,7 +10,7 @@ import {MainContainer} from '../styles/timeline'
 export default function Timeline() {
     const data = useContext(UserContext);
     const { userInfo } = data;
-
+    console.log(userInfo);
     return (
         <>
             <Header/>
