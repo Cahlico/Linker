@@ -11,16 +11,25 @@ export default function InputPost(props) {
 
     
     function publish() {
+
+        if(clicked) return;
         
         if(text===''||link==='') {
             alert("Preencha todos os campos, por favor");
+            return;
         }
 
-        if(clicked) return;
+        setClicked(true);
 
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts",{ link , text },{headers: {"User-Token": token}});
 
-        request.then(response => console.log(response)).catch(response=>console.log(response));
+        request.then(response => console.log(response))
+
+        request.catch(response=>{
+            alert("Houve um erro ao publicar o seu link");
+            setClicked(false);
+            console.log(response);
+        })
     }
 
     return (
