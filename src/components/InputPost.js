@@ -8,6 +8,7 @@ export default function InputPost(props) {
     const [link,setLink] = useState('');
     const [text,setText] = useState('');
     const [clicked,setClicked] = useState(false);
+    const [label,setLabel] = useState('Publicar')
 
     
     function publish() {
@@ -20,14 +21,23 @@ export default function InputPost(props) {
         }
 
         setClicked(true);
+        setLabel('Publicando...');
 
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts",{ link , text },{headers: {"User-Token": token}});
 
-        request.then(response => console.log(response))
+        request.then(response => {
+            setClicked(false);
+            setLabel('Publicar');
+            setLink('');
+            setText('');
+            console.log(response)
+            //att a lista de post
+        })
 
         request.catch(response=>{
             alert("Houve um erro ao publicar o seu link");
             setClicked(false);
+            setLabel('Publicar');
             console.log(response);
         })
     }
@@ -49,7 +59,7 @@ export default function InputPost(props) {
                     onChange={e => setText(e.target.value)}
                     value={text}
                     />
-                    <div><button onClick={publish}>Publicar</button></div>
+                    <div><button onClick={publish}>{label}</button></div>
                 </div>
             </InputContainer>
         </>
