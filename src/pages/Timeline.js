@@ -17,7 +17,7 @@ export default function Timeline() {
             <Header/>
             <MainContainer>
                 <h1>timeline</h1>
-                <InputPost/>
+                <InputPost userData={userData} />
             </MainContainer>
             <PostList userData={userData} />
         </>

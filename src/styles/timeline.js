@@ -38,31 +38,39 @@ export const HeaderContainer = styled.header `
 `
 
 export const MainContainer = styled.main `
-    padding: 0px 15vw;
-    font-family:'Lato', sans-serif;
+    padding-top: 100px;
+    padding-left: 17vw;
+    display: flex;
+    font-family: 'Lato',sans-serif;
+    flex-direction: column;
+    align-items: flex-start;
 
     & > h1 {
         color:white;
         font-weight:bold;
         font-size:43px;
         font-family: 'Oswald' , sans-serif;
+        margin-bottom:25px;
+        padding: 30px 0;
     }
 
-    & > div {
-        background: black;
-        display:flex;
-        height: 200px;
-        padding: 12px 20px;
-    }
+`
 
-    & > div h1 {
+export const InputContainer = styled.article `
+    background: #FFF;
+    display:flex;
+    padding: 10px 20px;
+    border-radius: 13px; 
+    width: 46vw;
+
+    h1 {
         color:#707070;
         font-weight:300;
         font-size:20px;
         margin-bottom:10px;
     }
 
-    & > div img {
+    img {
         width:53px;
         height:53px;
         border-radius:50%;
@@ -70,21 +78,21 @@ export const MainContainer = styled.main `
 
     }
 
-    & > div input {
+    input {
         background: #EFEFEF;
         font-size:15px;
         font-family:inherit;
         font-weight:300;
         outline:none;
         border: none;
-        width:100%;
+        width:38vw;
         margin-bottom:5px;
         padding: 5px;
         border-radius: 4px;
 
     }
 
-    & > div textarea {
+    textarea {
         outline:none;
         border:none;
         background: #EFEFEF;
@@ -92,10 +100,26 @@ export const MainContainer = styled.main `
         resize: none;
         padding: 5px;
         border-radius: 4px;
-
+        font-family:inherit;
+        font-size:15px;
     }
 
-    & div > div {
-        width: 100%;
+    div div {
+        display:flex;
+        justify-content:flex-end;
+    }
+
+    button {
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        padding: 5px 20px;
+        background: #1877F2;
+        color: white;
+        border-radius: 5px;
+        margin-top: 5px;
+        outline: none;
+        cursor: pointer;
     }
 `

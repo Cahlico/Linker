@@ -7,7 +7,7 @@ import PostBox from './PostBox';
 export default function PostList(props) {
 
     const { userData } = props;
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -15,14 +15,12 @@ export default function PostList(props) {
         const request = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=0&limit=10', {headers: {"User-Token": userData.token }});
 
         request.then(response => {
-            setPosts([...posts, response.data.posts[0]]);
+            setPosts(response.data.posts);
             setLoading(true);
         });
 
         request.catch(() => setError(true));
     }, []);
-
-    console.log(posts);
 
     return (
         <>
@@ -55,5 +53,5 @@ const WarningMessage = styled.h4`
 
 const Load = styled.img`
     width: 30vw;
-    margin: 20px 40vw;
+    margin: 0 40vw;
 `;
