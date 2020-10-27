@@ -1,8 +1,9 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Container, LoginTitle, LoginInfo } from '../styles/login';
+import UserContext from '../contexts/UserContext';
 
 export default function Login() {
 
@@ -27,13 +28,12 @@ export default function Login() {
         const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/sign_in', { email, password });
 
         request.then(response => {
-            console.log(response.data);
             const data = response.data;
-            setUserInfo({...userInfo, data});
+            setUserInfo({ ...userInfo, data });
+            history.push('/Timeline');
         });
 
-        request.catch((response) => console.log(response));
-
+        request.catch(() => alert('E-mail ou senha incorretos'));
     }
 
     return (

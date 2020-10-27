@@ -18,8 +18,6 @@ export default function SignUp() {
     function sendRequest(event) {
         event.preventDefault();
 
-        console.log({ email, password, username, pictureUrl });
-
         if(clicked)  return;
 
         if(email === '' || password === '' || username === '' || pictureUrl === '') {
@@ -27,17 +25,19 @@ export default function SignUp() {
             return;
         }
 
+        //https://pm1.narvii.com/6055/c57c6dd83178676ae35485d77bd40ffb5b34ccf6_hq.jpg
+
         setClicked(true);
 
-        const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/sign_up',  { email, password, username, pictureUrl });
+        const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/sign_up', { email, password, username, pictureUrl });
 
         request.then(response => {
-            console.log(response.data);
             const data = response.data;
             setUserInfo({...userInfo, data});
+            history.push('/Timeline');
         });
 
-        request.catch((response) => console.log(response));
+        request.catch(() => alert('E-mail inserido já cadastrado'));
     }
 
     return (
