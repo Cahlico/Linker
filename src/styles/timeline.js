@@ -38,7 +38,8 @@ export const HeaderContainer = styled.header `
 `
 
 export const MainContainer = styled.main `
-    padding: 100px 10vw;
+    padding-top: 100px;
+    padding-left: 17vw;
     display: flex;
     font-family: 'Lato',sans-serif;
     flex-direction: column;
@@ -49,17 +50,18 @@ export const MainContainer = styled.main `
         font-weight:bold;
         font-size:43px;
         font-family: 'Oswald' , sans-serif;
-        margin-bottom:25px; 
+        margin-bottom:25px;
+        padding: 30px 0;
     }
 
 `
 
 export const InputContainer = styled.article `
-
-    background: black;
+    background: #FFF;
     display:flex;
-    padding: 12px 20px;
-    border-radius: 12px; 
+    padding: 10px 20px;
+    border-radius: 13px; 
+    width: 46vw;
 
     h1 {
         color:#707070;
@@ -83,7 +85,7 @@ export const InputContainer = styled.article `
         font-weight:300;
         outline:none;
         border: none;
-        width:100%;
+        width:38vw;
         margin-bottom:5px;
         padding: 5px;
         border-radius: 4px;

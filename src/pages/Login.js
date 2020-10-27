@@ -33,7 +33,10 @@ export default function Login() {
             history.push('/Timeline');
         });
 
-        request.catch(() => alert('E-mail ou senha incorretos'));
+        request.catch(() => {
+            alert('E-mail ou senha incorretos');
+            setClicked(false);
+        });
     }
 
     return (
