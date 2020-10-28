@@ -19,7 +19,7 @@ export default function Timeline() {
     console.log(userData);
     return (
         <>
-            <Header avatar = {"https://pm1.narvii.com/6055/c57c6dd83178676ae35485d77bd40ffb5b34ccf6_hq.jpg"}/>
+            <Header avatar = {avatar}/>
             <MainContainer>
                 <h1>timeline</h1>
                 <InputPost 
