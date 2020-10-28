@@ -18,6 +18,10 @@ export const HeaderContainer = styled.header `
         font-size:49px;
     }
 
+    a {
+        color: inherit;
+    }
+
     & > div {
         display: flex;
         align-items: center;

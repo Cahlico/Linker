@@ -24,7 +24,7 @@ export default function Header(props) {
     return (
         <>
             <HeaderContainer>
-                <h1>linkr</h1>
+                <h1><Link to ="/timeline">linkr</Link></h1>
                 <div>
                     {isDroped
                         ? <BsChevronUp onClick={dropDownMenu}/>
