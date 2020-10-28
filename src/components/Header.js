@@ -50,7 +50,7 @@ const Menu = styled.div `
     background: #171717;
     right: 0;
     top: ${props=>props.isDroped?"63px":"-34px"};
-    transition: top 1s ease-in-out;
+    transition: top .5s ease-in-out;
     display:flex;
     flex-direction:column;
     align-items:center;
