@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import ReactHashtag from 'react-hashtag';
 
-import { PostContainer, Avatar, LinkContainer } from '../styles/styledPostBox';
+import { PostContainer, Avatar, LinkContainer, Hashtag } from '../styles/styledPostBox';
 
 export default function PostBox(props) {
 
     const { imgSrc, link, linkDescription, linkTitle, text, user } = props;
     const { id, username, avatar } = user;
-    console.log(id);
+    const history = useHistory();
 
     return (
         <PostContainer>
@@ -19,7 +20,21 @@ export default function PostBox(props) {
                 <Link to={{ pathname:`/UserPosts:${id}`, state: { id, username }}} >
                     <h3>{username}</h3>
                 </Link>
-                <p>{text}</p>
+
+                
+                <p>
+                    <ReactHashtag
+                        renderHashtag={(hashtagValue) => (
+                            <Hashtag>{hashtagValue}</Hashtag>
+                        )}
+                        onHashtagClick={hashtagValue => (
+                            history.push('/HashtagPage', state=hashtagValue)
+                        )}
+                    >
+                        {text}
+                    </ReactHashtag>
+                </p>
+
                 <LinkContainer href={link}>
                     <div>
                         <h4>{linkTitle}</h4>

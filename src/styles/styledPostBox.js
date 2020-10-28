@@ -50,3 +50,8 @@ export const LinkContainer = styled.a`
         font-size:11px;
     }
 `;
+
+export const Hashtag = styled.p`
+    color: #FFF;
+    font-weight: bold;
+`;

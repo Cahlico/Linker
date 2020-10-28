@@ -15,11 +15,11 @@ export default function Timeline() {
     if(userData === undefined) {
         window.location = "http://localhost:9000";
     }
-    const { avatar } = userData.user;
-    console.log(userData);
+    const { avatar, id, username } = userData.user;
+
     return (
         <>
-            <Header avatar = {avatar}/>
+            <Header avatar={avatar} id={id}/>
             <MainContainer>
                 <h1>timeline</h1>
                 <InputPost 
@@ -29,7 +29,7 @@ export default function Timeline() {
                 />
                 {/* <TrendingTopics/> */}
             </MainContainer>
-            <PostList userData={userData} refresh={refresh} id={null} />
+            <PostList userData={userData} refresh={refresh} id={null} username={username} />
         </>
     )
 }
