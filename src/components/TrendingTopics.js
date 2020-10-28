@@ -10,14 +10,13 @@ export default function TrendingTopics(props) {
     const { token } = props.userData;
 
     const { refresh , setRefresh } = useContext(UserContext);
-    console.log(refresh,setRefresh);
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/trending",{headers: {"User-Token": token}});
         request.then(response => setTopics(response.data.hashtags));
         
-        request.catch(response => console.log(response));
+        request.catch(() => window.location = "http://localhost:9000");
     },[])
 
     return (
@@ -27,7 +26,7 @@ export default function TrendingTopics(props) {
             <ul>
                  {topics.map(topic => 
                     <li key={topic.id} onClick={()=>{setRefresh(!refresh)}}>
-                        <Link to={{ pathname:`/Hashtag:${topic.name}`, state: { hashtag: topic.name }}}>{topic.name}</Link>
+                        <Link to={{ pathname:`/HashtagPage:${topic.name}`, state: topic.name }}>{topic.name}</Link>
                     </li>  
                   )}  
             </ul>    

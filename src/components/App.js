@@ -19,7 +19,7 @@ export default function App() {
                     <Route path="/Signup" component={SignUp} />
                     <Route path="/Timeline" component={Timeline} />
                     <Route path="/User:id" component={UserPosts} />
-                    <Route path="/Hashtag:hashtag" component={HashtagPage} />
+                    <Route path="/HashtagPage:hashtag" component={HashtagPage} />
                     <Route path="/" component={Login} />
                 </Switch>
             </Router>
