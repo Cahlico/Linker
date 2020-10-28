@@ -25,7 +25,7 @@ export default function HashtagPage() {
             <Header avatar = {avatar}/>
             <MainContainer>
                 <h1># {hashtag}</h1>
-                {/* <TrendingTopics/> */}
+                <TrendingTopics userData = {userData} />
             </MainContainer>
             <PostList userData={userData} refresh={refresh} hashtag={hashtag} />
         </>
