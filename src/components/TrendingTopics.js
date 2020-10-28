@@ -17,7 +17,6 @@ export default function Trendingtopics(props) {
         request.catch(response => console.log(response));
     },[])
 
-
     return (
         <TrendContainer>
             <h1>trending</h1>
@@ -25,7 +24,7 @@ export default function Trendingtopics(props) {
             <ul>
                  {topics.map(topic => 
                     <li key={topic.id}>
-                        <Link to="">{topic.name}</Link>
+                        <Link to={`/Hashtag:${topic.name}`}>{topic.name}</Link>
                     </li>  
                   )}  
             </ul>    
