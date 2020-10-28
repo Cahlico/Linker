@@ -1,32 +1,32 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import UserContext from '../contexts/UserContext';
 
 import Header from '../components/Header';
-import InputPost from '../components/InputPost';
+import TrendingTopics from '../components/TrendingTopics';
+import PostList from '../components/PostList';
 
 import { MainContainer } from '../styles/timeline'
 
-export default function UserPosts() {
-    const { userInfo } = useContext(UserContext);
-    const userData = userInfo.data
-
-    useEffect(() => {
-
-        /*`const request = axios.get(https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${userId}/posts?offset=0&limit=2`)
-
-        request.then(() => {
-
-        })
-        */
-    });
+export default function Timeline() {
+    const { userInfo, refresh , setRefresh } = useContext(UserContext);
+    const userData = userInfo.data;
+    const { state } = useLocation();
+    const { id, username } = state;
+    if(userData === undefined) {
+        window.location = "http://localhost:9000";
+    }
+    const { avatar } = userData.user;
 
     return (
         <>
-            <Header/>
+            <Header avatar = {avatar}/>
             <MainContainer>
-                <h1>Username's Posts</h1>
+                <h1>{username}'s posts</h1>
+                {/* <TrendingTopics/> */}
             </MainContainer>
+            <PostList userData={userData} refresh={refresh} id={id} />
         </>
     )
 }

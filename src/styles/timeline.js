@@ -52,7 +52,7 @@ export const MainContainer = styled.main `
         font-size:43px;
         font-family: 'Oswald' , sans-serif;
         margin-bottom:25px;
-        padding: 30px 0;
+        padding: 30px 0 20px 0;
     }
 
 `

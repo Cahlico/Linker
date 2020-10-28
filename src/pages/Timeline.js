@@ -11,7 +11,7 @@ import { MainContainer } from '../styles/timeline'
 
 export default function Timeline() {
     const { userInfo, refresh , setRefresh } = useContext(UserContext);
-    const userData = userInfo.data
+    const userData = userInfo.data;
     if(userData === undefined) {
         window.location = "http://localhost:9000";
     }
@@ -29,7 +29,7 @@ export default function Timeline() {
                 />
                 {/* <TrendingTopics/> */}
             </MainContainer>
-            <PostList userData={userData} refresh={refresh} />
+            <PostList userData={userData} refresh={refresh} id={null} />
         </>
     )
 }

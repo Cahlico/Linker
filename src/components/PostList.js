@@ -6,13 +6,20 @@ import PostBox from './PostBox';
 
 export default function PostList(props) {
 
-    const { userData, refresh } = props;
+    const { userData, refresh, id } = props;
+    let request;
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    console.log(id);
 
     useEffect(()=> {
-        const request = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=0&limit=10', {headers: {"User-Token": userData.token }});
+
+        if(id === null) {
+            request = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=0&limit=10', {headers: {"User-Token": userData.token }});
+        } else if (id) {
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=0&limit=10`, {headers: {"User-Token": userData.token }});
+        }
 
         request.then(response => {
             setPosts(response.data.posts);
@@ -53,6 +60,6 @@ const WarningMessage = styled.h4`
 `;
 
 const Load = styled.img`
-    width: 30vw;
-    margin: 0 40vw;
+    width: 15vw;
+    margin: 0 20vw;
 `;
