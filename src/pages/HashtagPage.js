@@ -13,7 +13,7 @@ export default function HashtagPage() {
     const { userInfo, refresh } = useContext(UserContext);
     const userData = userInfo.data;
     const { state } = useLocation();
-    const hashtag = state;
+    const { hashtag } = state;
     if(userData === undefined) {
         window.location = "http://localhost:9000";
     }

@@ -24,7 +24,7 @@ export default function Trendingtopics(props) {
             <ul>
                  {topics.map(topic => 
                     <li key={topic.id}>
-                        <Link to={`/Hashtag:${topic.name}`}>{topic.name}</Link>
+                        <Link to={{ pathname:`/Hashtag:${topic.name}`, state: { hashtag: topic.name }}}>{topic.name}</Link>
                     </li>  
                   )}  
             </ul>    
