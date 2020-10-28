@@ -13,11 +13,11 @@ export default function PostBox(props) {
             <div>
                 <h3>{username}</h3>
                 <p>{text}</p>
-                <LinkContainer>
+                <LinkContainer href={link}>
                     <div>
                         <h4>{linkTitle}</h4>
                         <p>{linkDescription}</p>
-                        <a>{link}</a>
+                        <p>{link}</p>
                     </div>
                     <img src={imgSrc} />
                 </LinkContainer>
@@ -54,7 +54,7 @@ const Avatar = styled.img`
     margin-right: 15px;
 `;
 
-const LinkContainer = styled.div`
+const LinkContainer = styled.a`
     margin-top: 10px;
     display: flex;
     border: 2px solid #C4C4C4;
@@ -66,14 +66,13 @@ const LinkContainer = styled.div`
         height: 100%;
     }
 
-    h4, p, a {
+    h4, p {
         padding: 10px;
         word-break: break-word;
         color: #B7B7B7;
     }
 
-    p , a { 
+    p { 
         font-size:11px;
-        display:block;
     }
 `;

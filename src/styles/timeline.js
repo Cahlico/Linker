@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header `
     align-items:center;
     background:#151515;
     padding:5px 20px;
+    z-index:1;
 
     h1 {
         font-family: 'Passion one', sans-serif;
@@ -17,7 +18,7 @@ export const HeaderContainer = styled.header `
         font-size:49px;
     }
 
-    div {
+    & > div {
         display: flex;
         align-items: center;
     }
