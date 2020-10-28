@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build"
   },
   "repository": {
     "type": "git",
@@ -23,15 +26,29 @@
     "@babel/preset-react": "^7.12.1",
     "axios": "^0.21.0",
     "babel-loader": "^8.1.0",
+    "gh-pages": "^3.1.0",
     "preact": "^10.5.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hashtag": "^2.1.2",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.0",
     "styled-components": "^5.2.0",
-    "webpack": "^5.2.0",
+    "webpack": "4.44.2",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

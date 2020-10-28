@@ -19,7 +19,7 @@ export default function PostList(props) {
         } else if (id) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=0&limit=10`, {headers: {"User-Token": userData.token }});
         } else {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=0&limit=2`, {headers: {"User-Token": userData.token }});
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=0&limit=10`, {headers: {"User-Token": userData.token }});
         }
 
         request.then(response => {
