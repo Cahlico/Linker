@@ -6,7 +6,7 @@ import PostBox from './PostBox';
 
 export default function PostList(props) {
 
-    const { userData } = props;
+    const { userData, refresh } = props;
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -20,7 +20,7 @@ export default function PostList(props) {
         });
 
         request.catch(() => setError(true));
-    }, []);
+    }, [refresh]);
 
     return (
         <>

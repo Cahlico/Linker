@@ -5,6 +5,7 @@ import { InputContainer } from '../styles/timeline';
 
 export default function InputPost(props) {
     const { token, user } = props.userData;
+    const { setRefresh, refresh } = props;
     const [link,setLink] = useState('');
     const [text,setText] = useState('');
     const [clicked,setClicked] = useState(false);
@@ -31,7 +32,7 @@ export default function InputPost(props) {
             setLink('');
             setText('');
             console.log(response)
-            //att a lista de post
+            setRefresh(!refresh);
         })
 
         request.catch(response=>{

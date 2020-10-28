@@ -85,7 +85,7 @@ export const InputContainer = styled.article `
         font-weight:300;
         outline:none;
         border: none;
-        width:38vw;
+        width:100%;
         margin-bottom:5px;
         padding: 5px;
         border-radius: 4px;
@@ -103,6 +103,10 @@ export const InputContainer = styled.article `
         font-family:inherit;
         font-size:15px;        
         font-weight:300;
+    }
+
+    & > div {
+        width:100%;
     }
 
     div div {

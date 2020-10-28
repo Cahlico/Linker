@@ -10,7 +10,7 @@ import PostList from '../components/PostList';
 import { MainContainer } from '../styles/timeline'
 
 export default function Timeline() {
-    const { userInfo } = useContext(UserContext);
+    const { userInfo, refresh , setRefresh } = useContext(UserContext);
     const userData = userInfo.data
     if(userData === undefined) {
         window.location = "http://localhost:9000";
@@ -22,10 +22,14 @@ export default function Timeline() {
             <Header avatar = {avatar}/>
             <MainContainer>
                 <h1>timeline</h1>
-                <InputPost userData = {userData} />
+                <InputPost 
+                userData = {userData} 
+                refresh = {refresh}
+                setRefresh = {setRefresh}
+                />
                 {/* <TrendingTopics/> */}
             </MainContainer>
-            <PostList userData={userData} />
+            <PostList userData={userData} refresh={refresh} />
         </>
     )
 }

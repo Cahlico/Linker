@@ -12,9 +12,9 @@ import HashtagPage from '../pages/HashtagPage';
 export default function App() {
 
     const [userInfo, setUserInfo] = useState({});
-
+    const [refresh, setRefresh] = useState(false)
     return (
-        <UserContext.Provider value={{ userInfo, setUserInfo }}>
+        <UserContext.Provider value={{ userInfo, setUserInfo, refresh, setRefresh }}>
             <Router>
                 <Switch>
                     <Route path="/Signup" component={SignUp} />
