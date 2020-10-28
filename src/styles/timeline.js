@@ -131,12 +131,49 @@ export const InputContainer = styled.article `
 `
 
 export const TrendContainer = styled.aside ` 
-    width:200px;
-    height:200px;
-    background:white;
-    position: fixed;
+    background: #171717;
+    position: sticky;
     right: 60px;
+    top: 217px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 700;
+    width: 23%;
+    padding: 15px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 
+    h1 {
+        font-size:27px;  
+        margin-bottom:12px;
+        width:100%;     
+    }
+
+    div {
+        width:calc(100% + 40px);
+        height:1px;
+        background:#484848;
+    }
+
+    ul {
+        margin-top: 15px;
+        width:100%;
+    }
+
+    li {
+        margin-bottom:10px;
+        font-size:19px;
+        font-family: 'Lato' , sans-serif;
+    }
+
+    li::before {
+        content: "#";
+    }
+
+    a {
+        color:inherit;
+    }
 `
 
 

@@ -47,7 +47,7 @@ export default function PostList(props) {
                                 key={post.id}
                             />
                         ))
-                : <Load src='../public/images/load.gif' />
+                : <Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif'/>
             }
         </>
     );
