@@ -11,14 +11,16 @@ export default function PostList(props) {
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    console.log(id);
+    const userId = userData.user.id;
 
     useEffect(()=> {
 
         if(id === null) {
             request = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=0&limit=10', {headers: {"User-Token": userData.token }});
-        } else if (id) {
+        } else if (id === userId) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=0&limit=10`, {headers: {"User-Token": userData.token }});
+        } else {
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/:hashtag/posts?offset=0&limit=2`, {headers: {"User-Token": userData.token }});
         }
 
         request.then(response => {
@@ -47,7 +49,7 @@ export default function PostList(props) {
                                 key={post.id}
                             />
                         ))
-                : <Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif'/>
+                : <Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' />
             }
         </>
     );

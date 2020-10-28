@@ -7,7 +7,7 @@ import UserContext from '../contexts/UserContext'
 import {HeaderContainer} from '../styles/timeline'
 
 export default function Header(props) {
-    const {avatar} = props;
+    const { avatar, id, username } = props;
     const [isDroped,setIsDroped] = useState(false);
     const { setUserInfo } = useContext(UserContext);
     const history = useHistory();
@@ -35,7 +35,7 @@ export default function Header(props) {
                 </div>
             </HeaderContainer>
             <Menu isDroped = {isDroped}>
-                <Link to="/my-posts">My posts</Link>
+                <Link to={{ pathname:`/UserPosts:my-posts`, state: { id, username }}} >My posts</Link>
                 <Link to="">My likes</Link>
                 <button onClick={logout}>Logout</button>
             </Menu>
