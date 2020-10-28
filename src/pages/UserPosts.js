@@ -29,7 +29,7 @@ export default function Timeline() {
                     ? <h1>My posts</h1>
                     : <h1>{username}'s posts</h1>
                 }
-                {/* <TrendingTopics/> */}
+                <TrendingTopics  userData = {userData} />
             </MainContainer>
             <PostList userData={userData} refresh={refresh} id={id} />
         </>

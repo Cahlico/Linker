@@ -31,7 +31,6 @@ export default function InputPost(props) {
             setLabel('Publicar');
             setLink('');
             setText('');
-            console.log(response)
             setRefresh(!refresh);
         })
 
@@ -39,7 +38,6 @@ export default function InputPost(props) {
             alert("Houve um erro ao publicar o seu link");
             setClicked(false);
             setLabel('Publicar');
-            console.log(response);
         })
     }
 

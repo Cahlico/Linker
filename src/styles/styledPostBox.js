@@ -19,6 +19,11 @@ export const PostContainer = styled.div`
     p {
         color: #B7B7B7;
     }
+
+    span {
+        color: #FFF;
+        font-weight: bold;
+    }
 `;
 
 export const Avatar = styled.img`
@@ -49,9 +54,4 @@ export const LinkContainer = styled.a`
     p { 
         font-size:11px;
     }
-`;
-
-export const Hashtag = styled.p`
-    color: #FFF;
-    font-weight: bold;
 `;

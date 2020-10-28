@@ -17,7 +17,6 @@ export default function Header(props) {
     }
 
     function logout() {
-        console.log("to perdido");
         setUserInfo({})
         history.push('/');
     }
