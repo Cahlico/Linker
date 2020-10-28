@@ -136,7 +136,7 @@ export const InputContainer = styled.article `
 
 export const TrendContainer = styled.aside ` 
     background: #171717;
-    position: sticky;
+    position: fixed;
     right: 60px;
     top: 217px;
     border-radius: 20px;
