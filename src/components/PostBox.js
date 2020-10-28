@@ -71,4 +71,9 @@ const LinkContainer = styled.div`
         word-break: break-word;
         color: #B7B7B7;
     }
+
+    p , a { 
+        font-size:11px;
+        display:block;
+    }
 `;
