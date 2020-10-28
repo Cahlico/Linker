@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
 import { TrendContainer } from '../styles/timeline';
+import UserContext from '../contexts/UserContext';
 
 
-export default function Trendingtopics(props) {
+export default function TrendingTopics(props) {
     const { token } = props.userData;
 
+    const { refresh , setRefresh } = useContext(UserContext);
+    console.log(refresh,setRefresh);
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {
@@ -23,7 +26,7 @@ export default function Trendingtopics(props) {
             <div/>
             <ul>
                  {topics.map(topic => 
-                    <li key={topic.id}>
+                    <li key={topic.id} onClick={()=>{setRefresh(!refresh)}}>
                         <Link to={{ pathname:`/Hashtag:${topic.name}`, state: { hashtag: topic.name }}}>{topic.name}</Link>
                     </li>  
                   )}  

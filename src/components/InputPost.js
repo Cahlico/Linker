@@ -1,11 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import axios from 'axios';
 
 import { InputContainer } from '../styles/timeline';
+import UserContext from '../contexts/UserContext';
 
 export default function InputPost(props) {
     const { token, user } = props.userData;
-    const { setRefresh, refresh } = props;
+    const { refresh , setRefresh } = useContext(UserContext)
     const [link,setLink] = useState('');
     const [text,setText] = useState('');
     const [clicked,setClicked] = useState(false);

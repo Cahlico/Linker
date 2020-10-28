@@ -27,7 +27,11 @@ export default function Timeline() {
                 refresh = {refresh}
                 setRefresh = {setRefresh}
                 />
-                <TrendingTopics userData = {userData} />
+                <TrendingTopics 
+                userData = {userData} 
+                refresh = {refresh}
+                setRefresh = {setRefresh}
+                />
             </MainContainer>
             <PostList userData={userData} refresh={refresh} id={null} />
         </>
