@@ -35,7 +35,7 @@ export default function Header(props) {
             </HeaderContainer>
             <Menu isDroped = {isDroped}>
                 <Link to={{ pathname:`/UserPosts:my-posts`, state: { id, username }}} >My posts</Link>
-                <Link to="">My likes</Link>
+                <Link to={{ pathname:`/my-likes`, state: { id }}}>My likes</Link>
                 <button onClick={logout}>Logout</button>
             </Menu>
         </>

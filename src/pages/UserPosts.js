@@ -33,5 +33,5 @@ export default function Timeline() {
             </MainContainer>
             <PostList userData={userData} refresh={refresh} id={id} />
         </>
-    )
+    );
 }

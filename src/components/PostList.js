@@ -6,7 +6,7 @@ import PostBox from './PostBox';
 
 export default function PostList(props) {
 
-    const { userData, refresh, id, hashtag } = props;
+    const { userData, refresh, id, hashtag, liked } = props;
     let request;
     const [posts, setPosts] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -16,7 +16,9 @@ export default function PostList(props) {
 
         if(id === null) {
             request = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=0&limit=10', {headers: {"User-Token": userData.token }});
-        } else if (id) {
+        } else if (id && liked) {
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/liked`, {headers: {"User-Token": userData.token }});
+        } else if(id) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=0&limit=10`, {headers: {"User-Token": userData.token }});
         } else {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=0&limit=10`, {headers: {"User-Token": userData.token }});
@@ -27,6 +29,8 @@ export default function PostList(props) {
             setPosts(response.data.posts);
             setLoading(true);
         });
+
+        console.log(posts);
 
         request.catch(() => setError(true));
     }, [refresh]);

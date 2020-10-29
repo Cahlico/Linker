@@ -14,9 +14,8 @@ export default function Likes(props) {
     const { postId, postUsername, userId, postLikes } = props;
     const likeObj = { id:userId, username: postUsername };
 
-    console.log(postLikes);
     postLikes.forEach((i) => {
-        if(id === i.userId) {
+        if(id === i.userId || id === i.id) {
             selected = true;
         }
     });
@@ -38,7 +37,7 @@ export default function Likes(props) {
 
     function showLikes() {
         let likeNums;
-
+    
         if(selected) {
             switch(postLikes.length) {
                 case 0:
@@ -48,10 +47,18 @@ export default function Likes(props) {
                     likeNums = `you liked the post`;
                     break;
                 case 2:
-                    likeNums = `you and ${username === postLikes[0]['user.username'] ? postLikes[1]['user.username'] : postLikes[0]['user.username']} liked the post`;
+                    likeNums = `you and 
+                    ${username === postLikes[0]['user.username'] || username === postLikes[0].username 
+                        ? postLikes[1]['user.username'] || postLikes[1].username 
+                        : postLikes[0]['user.username'] || postLikes[0].username} 
+                        liked the post`;
                     break;
                 default:
-                    likeNums = `you, ${username === postLikes[0]['user.username'] ? postLikes[1]['user.username'] : postLikes[0]['user.username']} , and ${postLikes.length - 2} others liked the post`;
+                    likeNums = `you, 
+                    ${username === postLikes[0]['user.username'] || username === postLikes[0].username 
+                        ? postLikes[1]['user.username'] || postLikes[1].username 
+                        : postLikes[0]['user.username'] || postLikes[0].username} 
+                        , and ${postLikes.length - 2} others liked the post`;
             }
         } else {
             switch(postLikes.length) {
@@ -59,17 +66,16 @@ export default function Likes(props) {
                     likeNums = 'no likes yet';
                     break;
                 case 1:
-                    likeNums = `${postLikes[0]['user.username']} liked the post`;
+                    likeNums = `${postLikes[0]['user.username'] || postLikes[0].username} liked the post`;
                     break;
                 case 2:
-                    likeNums = `${postLikes[0]['user.username']} and ${postLikes[1]['user.username']} liked the post`;
+                    likeNums = `${postLikes[0]['user.username'] || postLikes[0].username} and ${postLikes[1]['user.username'] || username === postLikes[0].username} liked the post`;
                     break;
                 default:
-                    likeNums = `${postLikes[0]['user.username']}, ${postLikes[1]['user.username']} , and ${postLikes.length - 2} others liked the post`;
+                    likeNums = `${postLikes[0]['user.username'] || postLikes[0].username}, ${postLikes[1]['user.username'] || postLikes[0].username} , and ${postLikes.length - 2} others liked the post`;
             }
         }
-
-        console.log(likeNums);
+    
         return likeNums;
     }
 
