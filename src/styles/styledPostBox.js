@@ -25,6 +25,7 @@ export const PostContainer = styled.div`
     span {
         color: #FFF;
         font-weight: bold;
+        cursor: pointer;
     }
 
     svg {
@@ -46,6 +47,7 @@ export const Avatar = styled.img`
     height:53px;
     border-radius:50%;
     margin-right: 15px;
+    cursor: pointer;
 `;
 
 export const LinkContainer = styled.a`
@@ -55,6 +57,7 @@ export const LinkContainer = styled.a`
     border-radius: 11px;
     overflow: hidden;
     height: 155px;
+    cursor: pointer;
 
     img {
         height: 100%;
