@@ -26,8 +26,9 @@ export default function HashtagPage() {
             <MainContainer>
                 <h1># {hashtag}</h1>
                 <TrendingTopics userData = {userData} />
+                <PostList userData={userData} refresh={refresh} hashtag={hashtag} />
             </MainContainer>
-            <PostList userData={userData} refresh={refresh} hashtag={hashtag} />
+            
         </>
     )
 }
