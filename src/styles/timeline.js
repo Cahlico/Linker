@@ -25,6 +25,7 @@ export const HeaderContainer = styled.header `
     & > div {
         display: flex;
         align-items: center;
+        cursor: pointer;
     }
 
     img {
