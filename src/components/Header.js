@@ -25,10 +25,10 @@ export default function Header(props) {
         <>
             <HeaderContainer>
                 <h1><Link to ="/timeline">linkr</Link></h1>
-                <div>
+                <div onClick={dropDownMenu}>
                     {isDroped
-                        ? <BsChevronUp onClick={dropDownMenu}/>
-                        : <BsChevronDown onClick={dropDownMenu}/>
+                        ? <BsChevronUp/>
+                        : <BsChevronDown/>
                     }                    
                     <img src={avatar}/>
                 </div>
