@@ -8,6 +8,8 @@ export const PostContainer = styled.div`
     border-radius: 13px; 
     width: 46vw;
     color: #FFF;
+    position: relative;
+    overflow-wrap: anywhere;
 
     h3 {
         color: #FFF;
@@ -23,6 +25,19 @@ export const PostContainer = styled.div`
     span {
         color: #FFF;
         font-weight: bold;
+    }
+
+    svg {
+        position: absolute;
+        top: 80px;
+        left: 32px;
+        cursor: pointer;
+        font-size: 26px;
+        color: #FFF;
+
+        &.selected {
+            color: #f0293d;
+        }
     }
 `;
 

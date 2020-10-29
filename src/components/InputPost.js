@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{ useState, useContext } from 'react'
 import axios from 'axios';
 
 import { InputContainer } from '../styles/timeline';
@@ -27,7 +27,7 @@ export default function InputPost(props) {
 
         const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts",{ link , text },{headers: {"User-Token": token}});
 
-        request.then(response => {
+        request.then(() => {
             setClicked(false);
             setLabel('Publicar');
             setLink('');
@@ -35,7 +35,7 @@ export default function InputPost(props) {
             setRefresh(!refresh);
         })
 
-        request.catch(response=>{
+        request.catch(( )=> {
             alert("Houve um erro ao publicar o seu link");
             setClicked(false);
             setLabel('Publicar');

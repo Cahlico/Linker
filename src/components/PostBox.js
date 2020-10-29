@@ -2,11 +2,12 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ReactHashtag from "react-hashtag";
 
-import { PostContainer, Avatar, LinkContainer, Hashtag } from '../styles/styledPostBox';
+import { PostContainer, Avatar, LinkContainer } from '../styles/styledPostBox';
+import Likes from './Likes';
 
 export default function PostBox(props) {
 
-    const { imgSrc, link, linkDescription, linkTitle, text, user } = props;
+    const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes } = props;
     const { id, username, avatar } = user;
     const history = useHistory();
 
@@ -21,6 +22,8 @@ export default function PostBox(props) {
                 <Avatar src={avatar} />
             </Link>
 
+            <Likes postId={postId} username={username} userId={id} postLikes={postLikes} />
+        
             <div>
                 <Link to={{ pathname:`/UserPosts:${id}`, state: { id, username }}} >
                     <h3>{username}</h3>

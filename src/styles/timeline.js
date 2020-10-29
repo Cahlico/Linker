@@ -137,12 +137,12 @@ export const InputContainer = styled.article `
 export const TrendContainer = styled.aside ` 
     background: #171717;
     position: fixed;
-    right: 60px;
+    right: 170px;
     top: 217px;
     border-radius: 20px;
     color: white;
     font-weight: 700;
-    width: 23%;
+    width: 20%;
     padding: 15px 20px;
     display:flex;
     flex-direction:column;

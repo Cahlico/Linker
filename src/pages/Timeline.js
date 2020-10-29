@@ -15,7 +15,7 @@ export default function Timeline() {
     if(userData === undefined) {
         window.location = "http://localhost:9000";
     }
-    const { avatar, id, username } = userData.user;
+    const { avatar, id } = userData.user;
 
     return (
         <>

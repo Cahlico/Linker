@@ -45,6 +45,8 @@ export default function PostList(props) {
                                 linkTitle={post.linkTitle}
                                 text={post.text}
                                 user={post.user}
+                                postId={post.id}
+                                postLikes={post.likes}
                                 key={post.id}
                             />
                         ))
