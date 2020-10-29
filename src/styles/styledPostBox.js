@@ -61,6 +61,7 @@ export const LinkContainer = styled.a`
 
     img {
         height: 100%;
+        max-width: 462px;
     }
 
     h4, p {
