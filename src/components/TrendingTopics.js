@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { TrendContainer } from '../styles/timeline';
 import UserContext from '../contexts/UserContext';
+import styled from 'styled-components';
 
 
 export default function TrendingTopics(props) {
@@ -22,6 +23,13 @@ export default function TrendingTopics(props) {
     return (
         <TrendContainer>
             <h1>trending</h1>
+            <HashtagSearch>
+                <span>#</span>
+                <input 
+                type="search"
+                placeholder="Assunto"
+                />
+            </HashtagSearch>
             <div/>
             <ul>
                  {topics.map(topic => 
@@ -33,3 +41,28 @@ export default function TrendingTopics(props) {
         </TrendContainer>
     )
 }
+
+const HashtagSearch = styled.form `
+    width: 100%;
+    margin-bottom: 8px;
+
+    span {
+        font-size: 19px;
+        font-family: inherit;
+        font-weight: 700;
+    }
+    
+    input {
+        font-family: inherit;
+        width: 85%;
+        font-size: 19px;
+        outline: none;
+        border: none;
+        border-radius: 4px;
+        margin-left: 2px;
+        color: white;
+        background-color: #333;
+        font-weight: 700;
+    }
+    
+`
