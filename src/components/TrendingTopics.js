@@ -11,7 +11,10 @@ export default function TrendingTopics(props) {
     const { token } = props.userData;
 
     const { refresh , setRefresh } = useContext(UserContext);
+
     const [topics, setTopics] = useState([]);
+    const [search, setSearch] = useState('');
+    const history = useHistory();
 
     useEffect(() => {
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/trending",{headers: {"User-Token": token}});
@@ -20,14 +23,28 @@ export default function TrendingTopics(props) {
         request.catch(() => window.location = "http://localhost:9000");
     },[])
 
+    function searchHashtag(event) {
+        event.preventDefault();
+
+        if(search==='') {
+            alert("Preencha o campo com um assunto");
+        }
+        else {
+            history.push({ pathname:`/HashtagPage:${search}`, state: search });
+            setRefresh(!refresh);
+        }
+    }
+
     return (
         <TrendContainer>
             <h1>trending</h1>
-            <HashtagSearch>
+            <HashtagSearch onSubmit={searchHashtag}>
                 <span>#</span>
                 <input 
                 type="search"
                 placeholder="Assunto"
+                onChange={e => setSearch(e.target.value)}
+                value={search}
                 />
             </HashtagSearch>
             <div/>

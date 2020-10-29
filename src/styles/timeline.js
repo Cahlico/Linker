@@ -68,6 +68,7 @@ export const InputContainer = styled.article `
     padding: 10px 20px;
     border-radius: 13px; 
     width: 46vw;
+    margin-bottom:20px;
 
     h1 {
         color:#707070;
