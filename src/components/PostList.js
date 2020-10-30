@@ -1,38 +1,79 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import InfiniteScroll from 'react-infinite-scroller';
 
 import PostBox from './PostBox';
+import UserContext from '../contexts/UserContext';
 
 export default function PostList(props) {
 
-    const { userData, refresh, id, hashtag, liked } = props;
+    const { refresh , setRefresh } = useContext(UserContext);
+    const { userData, id, hashtag, liked } = props;
     let request;
-    const [posts, setPosts] = useState(null);
+    const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    useEffect(()=> {
+    const [offset, setOffset] = useState(0);
+    const [more, setMore] = useState(true);
 
+    useEffect(()=> {
+        
         if(id === null) {
-            request = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=0&limit=10', {headers: {"User-Token": userData.token }});
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=${offset}&limit=10`, {headers: {"User-Token": userData.token }});
         } else if (id && liked) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/liked`, {headers: {"User-Token": userData.token }});
         } else if(id) {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=0&limit=10`, {headers: {"User-Token": userData.token }});
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=${offset}&limit=10`, {headers: {"User-Token": userData.token }});
         } else {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=0&limit=10`, {headers: {"User-Token": userData.token }});
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=${offset}&limit=10`, {headers: {"User-Token": userData.token }});
             setLoading(false);
         }
 
         request.then(response => {
-            setPosts(response.data.posts);
             setLoading(true);
+            if(response.data.posts.length===0) return;
+            setPosts([...posts,...response.data.posts]);
+            setMore(true);
         });
 
         request.catch(() => setError(true));
     }, [refresh]);
 
+    
+    let items = []
+
+    const loader = <Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' />
+
+    function render() {
+
+        if(posts.length===0) return;
+        
+        posts.map(post => {
+            items.push(
+                <PostBox
+                imgSrc={post.linkImage}
+                link={post.link}
+                linkDescription={post.linkDescription}
+                linkTitle={post.linkTitle}
+                text={post.text}
+                user={post.user}
+                postId={post.id}
+                postLikes={post.likes}
+                key={post.id}
+                />
+            );
+        });
+    }render();
+
+    function load() {
+        if(posts.length<10) return;
+        setMore(false);
+        setOffset(offset+10);
+        setRefresh(!refresh);
+    }
+    
     return (
         <>
             {loading
@@ -40,19 +81,12 @@ export default function PostList(props) {
                     ? <WarningMessage>Houve uma falha ao obter os posts, por favor atualize a página</WarningMessage>
                     : posts.length === 0
                         ? <WarningMessage>Nenhum post encontrado</WarningMessage>
-                        : posts.map(post => (
-                            <PostBox
-                                imgSrc={post.linkImage}
-                                link={post.link}
-                                linkDescription={post.linkDescription}
-                                linkTitle={post.linkTitle}
-                                text={post.text}
-                                user={post.user}
-                                postId={post.id}
-                                postLikes={post.likes}
-                                key={post.id}
-                            />
-                        ))
+                        : <InfiniteScroll
+                            loadMore={load}
+                            hasMore={more}
+                          >
+                          {items}
+                        </InfiniteScroll>
                 : <Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' />
             }
         </>

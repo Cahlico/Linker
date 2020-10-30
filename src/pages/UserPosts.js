@@ -31,7 +31,7 @@ export default function UserPosts() {
                     : <h1>{username}'s posts</h1>
                 }
                 <TrendingTopics  userData = {userData} />
-                <PostList userData={userData} refresh={refresh} id={id} />
+                <PostList userData={userData} id={id} />
             </MainContainer>
             
         </>
