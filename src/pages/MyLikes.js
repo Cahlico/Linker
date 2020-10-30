@@ -28,7 +28,7 @@ export default function MyLikes() {
             <MainContainer>
                 <h1>My Likes</h1>
                 <TrendingTopics  userData = {userData} />
-                <PostList userData={userData} refresh={refresh} id={id} liked={liked} />
+                <PostList userData={userData} id={id} liked={liked} />
             </MainContainer>
             
         </>
