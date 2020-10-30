@@ -16,26 +16,37 @@ export default function PostList(props) {
     const [error, setError] = useState(false);
 
     const [offset, setOffset] = useState(0);
-    const [more, setMore] = useState(true);
+    const [more, setMore] = useState(false);
+    
 
     useEffect(()=> {
         
         if(id === null) {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=${offset}&limit=10`, {headers: {"User-Token": userData.token }});
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
         } else if (id && liked) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/liked`, {headers: {"User-Token": userData.token }});
         } else if(id) {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=${offset}&limit=10`, {headers: {"User-Token": userData.token }});
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
         } else {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=${offset}&limit=10`, {headers: {"User-Token": userData.token }});
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
             setLoading(false);
         }
 
         request.then(response => {
             setLoading(true);
-            if(response.data.posts.length===0) return;
-            setPosts([...posts,...response.data.posts]);
-            setMore(true);
+            
+            let resp = [];
+            let nextPost = {id:"uniaoFagnerParato"};
+            
+            response.data.posts.forEach((post,i) => {
+                if(i<10) resp.push(post);
+                else nextPost = post;
+            })
+            
+            setPosts([...posts,...resp]);
+
+            if(nextPost.id==="uniaoFagnerParato") return;
+                setMore(true);
         });
 
         request.catch(() => setError(true));
