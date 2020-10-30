@@ -9,7 +9,7 @@ export const HeaderContainer = styled.header `
     align-items:center;
     background:#151515;
     padding:5px 20px;
-    z-index:1;
+    z-index:100;
 
     h1 {
         font-family: 'Passion one', sans-serif;

@@ -55,6 +55,7 @@ const Menu = styled.div `
     padding: 17px;
     color:white;
     border-radius: 0px 0px 0px 20px;
+    z-index:10;
 
     a {
         color:inherit;
