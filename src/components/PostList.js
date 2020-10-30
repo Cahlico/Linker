@@ -129,4 +129,8 @@ const WarningMessage = styled.h4`
 const Load = styled.img`
     width: 15vw;
     margin: 0 20vw;
+
+    @media (max-width: 600px) {
+        width: 60vw;
+    }
 `;

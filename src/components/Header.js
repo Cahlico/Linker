@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 
 import UserContext from '../contexts/UserContext'
-import { HeaderContainer } from '../styles/timeline'
+import { HeaderContainer } from '../styles/styledTimeline'
 
 export default function Header(props) {
     const { avatar, id, username } = props;

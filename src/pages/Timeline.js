@@ -7,7 +7,7 @@ import InputPost from '../components/InputPost';
 import TrendingTopics from '../components/TrendingTopics';
 import PostList from '../components/PostList';
 
-import { MainContainer } from '../styles/timeline'
+import { MainContainer } from '../styles/styledTimeline'
 
 export default function Timeline() {
     
@@ -22,7 +22,7 @@ export default function Timeline() {
         <>
             <Header avatar={avatar} id={id}/>
             <MainContainer>
-                <h1>timeline</h1>
+                <span><h1>timeline</h1></span>
                 <InputPost 
                 userData = {userData} 
                 />
