@@ -40,6 +40,12 @@ export const PostContainer = styled.div`
             color: #f0293d;
         }
     }
+
+    @media(max-width: 600px) {
+        width: 100vw;
+        border-radius: 2px;
+        margin: 30px 0vw;
+    }
 `;
 
 export const Avatar = styled.img`
@@ -72,5 +78,9 @@ export const LinkContainer = styled.a`
 
     p { 
         font-size:11px;
+    }
+
+    @media(max-width: 600px) {
+        height: 15vh;
     }
 `;

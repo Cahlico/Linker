@@ -51,7 +51,7 @@ export const MainContainer = styled.main `
     flex-direction: column;
     align-items: flex-start;
 
-    & > h1 {
+    & > span {
         color:white;
         font-weight:bold;
         font-size:43px;
@@ -60,6 +60,16 @@ export const MainContainer = styled.main `
         padding: 30px 0 20px 0;
     }
 
+    @media(max-width: 600px) {
+        padding-top: 60px;
+        padding-left: 0;
+
+        & > span {
+            width: 100vw;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    }
 `
 
 export const InputContainer = styled.article `
@@ -82,7 +92,6 @@ export const InputContainer = styled.article `
         height:53px;
         border-radius:50%;
         margin-right: 15px;
-
     }
 
     input {
@@ -134,6 +143,12 @@ export const InputContainer = styled.article `
         outline: none;
         cursor: pointer;
     }
+
+    @media(max-width: 600px) {
+        width: 100vw;
+        border-radius: 2px;
+        margin-bottom: 0px;
+    }
 `
 
 export const TrendContainer = styled.aside ` 
@@ -179,6 +194,10 @@ export const TrendContainer = styled.aside `
 
     a {
         color:inherit;
+    }
+
+    @media (max-width: 600px) {
+        display: none;
     }
 `
 

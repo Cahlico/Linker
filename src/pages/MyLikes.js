@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import TrendingTopics from '../components/TrendingTopics';
 import PostList from '../components/PostList';
 
-import { MainContainer } from '../styles/timeline'
+import { MainContainer } from '../styles/styledTimeline'
 
 export default function MyLikes() {
 
@@ -27,7 +27,7 @@ export default function MyLikes() {
         <>
             <Header avatar = {avatar} id={userId} />
             <MainContainer>
-                <h1>My Likes</h1>
+                <span><h1>My Likes</h1></span>
                 <TrendingTopics  userData = {userData} />
                 <PostList userData={userData} id={id} liked={liked} />
             </MainContainer>

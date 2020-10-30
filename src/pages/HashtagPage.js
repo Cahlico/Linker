@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import TrendingTopics from '../components/TrendingTopics';
 import PostList from '../components/PostList';
 
-import { MainContainer } from '../styles/timeline'
+import { MainContainer } from '../styles/styledTimeline'
 
 export default function HashtagPage() {
     
@@ -25,7 +25,7 @@ export default function HashtagPage() {
         <>
             <Header avatar = {avatar} id={id} />
             <MainContainer>
-                <h1># {hashtag}</h1>
+                <span><h1># {hashtag}</h1></span>
                 <TrendingTopics userData = {userData} />
                 <PostList userData={userData} hashtag={hashtag} />
             </MainContainer>

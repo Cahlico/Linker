@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import TrendingTopics from '../components/TrendingTopics';
 import PostList from '../components/PostList';
 
-import { MainContainer } from '../styles/timeline'
+import { MainContainer } from '../styles/styledTimeline'
 
 export default function UserPosts() {
 
@@ -27,8 +27,8 @@ export default function UserPosts() {
             <Header avatar = {avatar} id={userId} />
             <MainContainer>
                 {id === userId
-                    ? <h1>My posts</h1>
-                    : <h1>{username}'s posts</h1>
+                    ? <span><h1>My posts</h1></span>
+                    : <span><h1>{username}'s posts</h1></span>
                 }
                 <TrendingTopics  userData = {userData} />
                 <PostList userData={userData} id={id} />

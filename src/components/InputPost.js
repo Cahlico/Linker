@@ -1,7 +1,7 @@
 import React,{ useState, useContext } from 'react'
 import axios from 'axios';
 
-import { InputContainer } from '../styles/timeline';
+import { InputContainer } from '../styles/styledTimeline';
 import UserContext from '../contexts/UserContext';
 
 export default function InputPost(props) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
-import { TrendContainer } from '../styles/timeline';
+import { TrendContainer } from '../styles/styledTimeline';
 import UserContext from '../contexts/UserContext';
 import styled from 'styled-components';
 
