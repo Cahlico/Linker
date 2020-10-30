@@ -64,23 +64,20 @@ const HashtagSearch = styled.form `
     width: 100%;
     margin-bottom: 8px;
 
-    span {
-        font-size: 19px;
-        font-family: inherit;
+    span, input {
+        margin: 10px 3px;
+        font-size: 18px;
         font-weight: 700;
     }
     
     input {
-        font-family: inherit;
-        width: 85%;
-        font-size: 19px;
+        width: 87%;
         outline: none;
         border: none;
         border-radius: 4px;
-        margin-left: 2px;
-        color: white;
-        background-color: #333;
-        font-weight: 700;
+        background: #FFF;
+        color: #171717;
+        padding: 5px 5px;
     }
     
 `

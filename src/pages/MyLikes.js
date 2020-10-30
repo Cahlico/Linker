@@ -11,7 +11,7 @@ import { MainContainer } from '../styles/timeline'
 
 export default function MyLikes() {
 
-    const { userInfo, refresh } = useContext(UserContext);
+    const { userInfo } = useContext(UserContext);
     const userData = userInfo.data;
     const { state } = useLocation();
     const { id } = state;
@@ -20,11 +20,12 @@ export default function MyLikes() {
         window.location = "http://localhost:9000";
     }
 
+    const userId = userData.user.id;
     const { avatar } = userData.user;
 
     return (
         <>
-            <Header avatar = {avatar}/>
+            <Header avatar = {avatar} id={userId} />
             <MainContainer>
                 <h1>My Likes</h1>
                 <TrendingTopics  userData = {userData} />

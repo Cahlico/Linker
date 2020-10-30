@@ -11,7 +11,7 @@ import { MainContainer } from '../styles/timeline'
 
 export default function HashtagPage() {
     
-    const { userInfo, refresh } = useContext(UserContext);
+    const { userInfo } = useContext(UserContext);
     const userData = userInfo.data;
     const { state } = useLocation();
     const hashtag = state;
@@ -19,11 +19,11 @@ export default function HashtagPage() {
         window.location = "http://localhost:9000";
     }
 
-    const { avatar } = userData.user;
+    const { avatar, id } = userData.user;
 
     return (
         <>
-            <Header avatar = {avatar}/>
+            <Header avatar = {avatar} id={id} />
             <MainContainer>
                 <h1># {hashtag}</h1>
                 <TrendingTopics userData = {userData} />

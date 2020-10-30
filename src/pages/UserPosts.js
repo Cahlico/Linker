@@ -11,7 +11,7 @@ import { MainContainer } from '../styles/timeline'
 
 export default function UserPosts() {
 
-    const { userInfo, refresh } = useContext(UserContext);
+    const { userInfo } = useContext(UserContext);
     const userData = userInfo.data;
     const { state } = useLocation();
     const { id, username } = state;
@@ -24,7 +24,7 @@ export default function UserPosts() {
 
     return (
         <>
-            <Header avatar = {avatar}/>
+            <Header avatar = {avatar} id={userId} />
             <MainContainer>
                 {id === userId
                     ? <h1>My posts</h1>
