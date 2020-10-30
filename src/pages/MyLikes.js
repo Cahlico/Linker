@@ -8,7 +8,7 @@ import TrendingTopics from '../components/TrendingTopics';
 import PostList from '../components/PostList';
 
 import { MainContainer } from '../styles/styledTimeline'
-
+/* Ao clicar na função de like não funciona da maneira esperada, por favor nos mostre por quê :( */
 export default function MyLikes() {
 
     const { userInfo } = useContext(UserContext);
