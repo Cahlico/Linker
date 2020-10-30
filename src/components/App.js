@@ -8,9 +8,9 @@ export default function App() {
 
     const [userInfo, setUserInfo] = useState({});
     const [refresh, setRefresh] = useState(false);
-
+    const [myPost, setMyPost] = useState(false);
     return (
-        <UserContext.Provider value={{ userInfo, setUserInfo, refresh, setRefresh }}>
+        <UserContext.Provider value={{ userInfo, setUserInfo, refresh, setRefresh, myPost, setMyPost }}>
             <Router>
                 <AnimatedSwitch />
             </Router>

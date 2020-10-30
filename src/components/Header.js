@@ -9,7 +9,6 @@ import { HeaderContainer } from '../styles/timeline'
 export default function Header(props) {
     const { avatar, id, username } = props;
     const [isDroped,setIsDroped] = useState(false);
-    const { setUserInfo } = useContext(UserContext);
     const history = useHistory();
 
     function dropDownMenu () {
@@ -17,7 +16,6 @@ export default function Header(props) {
     }
 
     function logout() {
-        setUserInfo({})
         history.push('/');
     }
 

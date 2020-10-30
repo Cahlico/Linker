@@ -8,7 +8,7 @@ import UserContext from '../contexts/UserContext';
 
 export default function PostList(props) {
 
-    const { refresh , setRefresh } = useContext(UserContext);
+    const { refresh , setRefresh, myPost, setMyPost } = useContext(UserContext);
     const { userData, id, hashtag, liked } = props;
     let request;
     const [posts, setPosts] = useState([]);
@@ -25,11 +25,11 @@ export default function PostList(props) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
         } else if (id && liked) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/liked`, {headers: {"User-Token": userData.token }});
-        } else if(id) {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
-        } else {
+        } else if(hashtag) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
             setLoading(false);
+        } else {
+            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});            
         }
 
         request.then(response => {
@@ -37,14 +37,28 @@ export default function PostList(props) {
             
             let resp = [];
             let nextPost = {id:"uniaoFagnerParato"};
-            
+            let findEqual;
             response.data.posts.forEach((post,i) => {
                 if(i<10) resp.push(post);
                 else nextPost = post;
             })
-            
-            setPosts([...posts,...resp]);
+            resp = resp.filter(post=> {
+                findEqual = posts.find(p=>{
+                    return p.id === post.id;
+                })
+                if(findEqual) return false;
+                else return true;
+            })
 
+            if(myPost) {
+                setPosts([...resp,...posts]);
+                setMyPost(false);
+            }
+
+            else {
+                setPosts([...posts,...resp])
+            }
+            
             if(nextPost.id==="uniaoFagnerParato") return;
                 setMore(true);
         });
@@ -77,6 +91,7 @@ export default function PostList(props) {
             );
         });
     }render();
+    console.log(posts);
 
     function load() {
         if(posts.length<10) return;
@@ -95,6 +110,7 @@ export default function PostList(props) {
                         : <InfiniteScroll
                             loadMore={load}
                             hasMore={more}
+                            loader={<Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' />}
                           >
                           {items}
                         </InfiniteScroll>

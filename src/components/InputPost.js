@@ -6,7 +6,7 @@ import UserContext from '../contexts/UserContext';
 
 export default function InputPost(props) {
     const { token, user } = props.userData;
-    const { refresh , setRefresh } = useContext(UserContext)
+    const { refresh , setRefresh, setMyPost } = useContext(UserContext)
     const [link,setLink] = useState('');
     const [text,setText] = useState('');
     const [clicked,setClicked] = useState(false);
@@ -17,8 +17,8 @@ export default function InputPost(props) {
 
         if(clicked) return;
         
-        if(text===''||link==='') {
-            alert("Preencha todos os campos, por favor");
+        if(link==='') {
+            alert("Preencha o link, por favor");
             return;
         }
 
@@ -32,6 +32,7 @@ export default function InputPost(props) {
             setLabel('Publicar');
             setLink('');
             setText('');
+            setMyPost(true);
             setRefresh(!refresh);
         })
 
