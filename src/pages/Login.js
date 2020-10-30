@@ -59,7 +59,7 @@ export default function Login() {
                     placeholder='password'
                 />
                 <button type='submit'>Log In</button>
-                <Link to='/SignUp'>First time? Create an account!</Link>
+                <Link to='/SignUp' >First time? Create an account!</Link>
             </LoginInfo>
         </Container>
     );

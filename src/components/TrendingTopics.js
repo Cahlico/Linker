@@ -51,7 +51,8 @@ export default function TrendingTopics(props) {
             <ul>
                  {topics.map(topic => 
                     <li key={topic.id} onClick={()=>{setRefresh(!refresh)}}>
-                        <Link to={{ pathname:`/HashtagPage:${topic.name}`, state: topic.name }}>{topic.name}</Link>
+                        <Link to={{ pathname:`/HashtagPage:${topic.name}`, state: topic.name }} 
+                        >{topic.name}</Link>
                     </li>  
                   )}  
             </ul>    

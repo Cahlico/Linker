@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 
 import UserContext from '../contexts/UserContext'
-import {HeaderContainer} from '../styles/timeline'
+import { HeaderContainer } from '../styles/timeline'
 
 export default function Header(props) {
     const { avatar, id, username } = props;
@@ -24,7 +24,7 @@ export default function Header(props) {
     return (
         <>
             <HeaderContainer>
-                <h1><Link to ="/timeline">linkr</Link></h1>
+                <h1><Link to ="/timeline" >linkr</Link></h1>
                 <div onClick={dropDownMenu}>
                     {isDroped
                         ? <BsChevronUp/>
@@ -34,8 +34,9 @@ export default function Header(props) {
                 </div>
             </HeaderContainer>
             <Menu isDroped = {isDroped}>
-                <Link to={{ pathname:`/UserPosts:my-posts`, state: { id, username }}} >My posts</Link>
-                <Link to={{ pathname:`/my-likes`, state: { id }}}>My likes</Link>
+                <Link 
+                to={{ pathname:`/UserPosts:my-posts`, state: { id, username }}} >My posts</Link>
+                <Link to={{ pathname:`/my-likes`, state: { id }}} >My likes</Link>
                 <button onClick={logout}>Logout</button>
             </Menu>
         </>

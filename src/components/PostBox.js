@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ReactHashtag from "react-hashtag";
 
 import { PostContainer, Avatar, LinkContainer } from '../styles/styledPostBox';
+import UserContext from '../contexts/UserContext';
 import Likes from './Likes';
 
 export default function PostBox(props) {
 
+    const { userInfo } = useContext(UserContext);
+    const userData = userInfo.data;
     const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes } = props;
     const { id, username, avatar } = user;
     const history = useHistory();

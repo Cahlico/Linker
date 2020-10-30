@@ -10,6 +10,7 @@ import PostList from '../components/PostList';
 import { MainContainer } from '../styles/timeline'
 
 export default function Timeline() {
+    
     const { userInfo, refresh , setRefresh } = useContext(UserContext);
     const userData = userInfo.data;
     if(userData === undefined) {
@@ -36,6 +37,6 @@ export default function Timeline() {
             </MainContainer>
             
         </>
-    )
+    );
 }
 

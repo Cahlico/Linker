@@ -9,7 +9,8 @@ import PostList from '../components/PostList';
 
 import { MainContainer } from '../styles/timeline'
 
-export default function Timeline() {
+export default function UserPosts() {
+
     const { userInfo, refresh } = useContext(UserContext);
     const userData = userInfo.data;
     const { state } = useLocation();

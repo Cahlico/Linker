@@ -1,9 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { IoIosHeartEmpty, IoIosHeart } from 'react-icons/io';
 import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
 
 import UserContext from '../contexts/UserContext';
+import { showLikes } from '../functions/showLikes';
 
 export default function Likes(props) {
 
@@ -35,50 +36,6 @@ export default function Likes(props) {
         setSelected(!selected);
     }
 
-    function showLikes() {
-        let likeNums;
-    
-        if(selected) {
-            switch(postLikes.length) {
-                case 0:
-                    likeNums = 'no likes yet';
-                    break;
-                case 1:
-                    likeNums = `you liked the post`;
-                    break;
-                case 2:
-                    likeNums = `you and 
-                    ${username === postLikes[0]['user.username'] || username === postLikes[0].username 
-                        ? postLikes[1]['user.username'] || postLikes[1].username 
-                        : postLikes[0]['user.username'] || postLikes[0].username} 
-                        liked the post`;
-                    break;
-                default:
-                    likeNums = `you, 
-                    ${username === postLikes[0]['user.username'] || username === postLikes[0].username 
-                        ? postLikes[1]['user.username'] || postLikes[1].username 
-                        : postLikes[0]['user.username'] || postLikes[0].username} 
-                        , and ${postLikes.length - 2} others liked the post`;
-            }
-        } else {
-            switch(postLikes.length) {
-                case 0:
-                    likeNums = 'no likes yet';
-                    break;
-                case 1:
-                    likeNums = `${postLikes[0]['user.username'] || postLikes[0].username} liked the post`;
-                    break;
-                case 2:
-                    likeNums = `${postLikes[0]['user.username'] || postLikes[0].username} and ${postLikes[1]['user.username'] || username === postLikes[0].username} liked the post`;
-                    break;
-                default:
-                    likeNums = `${postLikes[0]['user.username'] || postLikes[0].username}, ${postLikes[1]['user.username'] || postLikes[0].username} , and ${postLikes.length - 2} others liked the post`;
-            }
-        }
-    
-        return likeNums;
-    }
-
     return (
         <>
             {selected
@@ -86,7 +43,7 @@ export default function Likes(props) {
                     <IoIosHeart 
                         onClick={() => setLikes('dislike')} 
                         className='selected'
-                        data-tip={showLikes()}
+                        data-tip={showLikes(selected, username, postLikes)}
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
                     <ReactTooltip />
@@ -94,7 +51,7 @@ export default function Likes(props) {
                 : <>
                     <IoIosHeartEmpty 
                         onClick={() => setLikes('like')}
-                        data-tip={showLikes()}
+                        data-tip={showLikes(selected, username, postLikes)}
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
                     <ReactTooltip />

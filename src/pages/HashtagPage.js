@@ -10,6 +10,7 @@ import PostList from '../components/PostList';
 import { MainContainer } from '../styles/timeline'
 
 export default function HashtagPage() {
+    
     const { userInfo, refresh } = useContext(UserContext);
     const userData = userInfo.data;
     const { state } = useLocation();
@@ -30,5 +31,5 @@ export default function HashtagPage() {
             </MainContainer>
             
         </>
-    )
+    );
 }

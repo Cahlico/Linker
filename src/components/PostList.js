@@ -30,8 +30,6 @@ export default function PostList(props) {
             setLoading(true);
         });
 
-        console.log(posts);
-
         request.catch(() => setError(true));
     }, [refresh]);
 

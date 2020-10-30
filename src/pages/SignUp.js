@@ -73,7 +73,7 @@ export default function SignUp() {
                     placeholder='picture url'
                 />
                 <button type='submit'>Log In</button>
-                <Link to='/Login'>Switch back to log in</Link>
+                <Link to='/Login' >Switch back to log in</Link>
             </LoginInfo>
         </Container>
     );
