@@ -12,7 +12,7 @@ export default function PostList(props) {
     const { userData, id, hashtag, liked } = props;
     let request;
     const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     const [offset, setOffset] = useState(0);
@@ -20,20 +20,19 @@ export default function PostList(props) {
     
 
     useEffect(()=> {
-        
+
         if(id === null) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
         } else if (id && liked) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/liked`, {headers: {"User-Token": userData.token }});
         } else if(hashtag) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
-            setLoading(false);
         } else {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});            
         }
 
         request.then(response => {
-            setLoading(true);
+            setLoading(false);
             
             let resp = [];
             let nextPost = {id:"uniaoFagnerParato"};
@@ -60,10 +59,11 @@ export default function PostList(props) {
             }
             
             if(nextPost.id==="uniaoFagnerParato") return;
-                setMore(true);
+            setMore(true);
         });
 
         request.catch(() => setError(true));
+        
     }, [refresh]);
 
     
@@ -91,7 +91,6 @@ export default function PostList(props) {
             );
         });
     }render();
-    console.log(posts);
 
     function load() {
         if(posts.length<10) return;
@@ -102,7 +101,7 @@ export default function PostList(props) {
     
     return (
         <>
-            {loading
+            {!loading
                 ? error
                     ? <WarningMessage>Houve uma falha ao obter os posts, por favor atualize a página</WarningMessage>
                     : posts.length === 0

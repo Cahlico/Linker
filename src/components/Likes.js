@@ -16,10 +16,10 @@ export default function Likes(props) {
     const likeObj = { id:userId, username: postUsername };
 
     postLikes.forEach((i) => {
-        if(id === i.userId || id === i.id) {
-            selected = true;
-        }
+        if(id === i.userId || id === i.id) selected = true;
     });
+
+    console.log(postLikes);
     
     function setLikes(type) {
 

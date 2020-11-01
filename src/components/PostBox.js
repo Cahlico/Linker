@@ -7,7 +7,7 @@ import Likes from './Likes';
 
 export default function PostBox(props) {
 
-    const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes, liked } = props;
+    const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes } = props;
     const { id, username, avatar } = user;
     const history = useHistory();
 
