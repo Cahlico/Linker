@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroller';
 
-import PostBox from './PostBox';
 import UserContext from '../contexts/UserContext';
+import { receivePosts } from '../functions/receivePosts';
+import { render } from '../functions/render';
 
 export default function PostList(props) {
 
@@ -14,12 +15,12 @@ export default function PostList(props) {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-
+    let items = []
     const [offset, setOffset] = useState(0);
     const [more, setMore] = useState(false);
     
 
-    useEffect(()=> {
+    useEffect(() => {
 
         if(id === null) {
             request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
@@ -33,64 +34,16 @@ export default function PostList(props) {
 
         request.then(response => {
             setLoading(false);
-            
-            let resp = [];
-            let nextPost = {id:"uniaoFagnerParato"};
-            let findEqual;
-            response.data.posts.forEach((post,i) => {
-                if(i<10) resp.push(post);
-                else nextPost = post;
-            })
-            resp = resp.filter(post=> {
-                findEqual = posts.find(p=>{
-                    return p.id === post.id;
-                })
-                if(findEqual) return false;
-                else return true;
-            })
-
-            if(myPost) {
-                setPosts([...resp,...posts]);
-                setMyPost(false);
-            }
-
-            else {
-                setPosts([...posts,...resp])
-            }
-            
-            if(nextPost.id==="uniaoFagnerParato") return;
-            setMore(true);
+            receivePosts(response, setPosts, posts, myPost, setMyPost, setMore);
         });
 
         request.catch(() => setError(true));
         
     }, [refresh]);
 
-    
-    let items = []
-
     const loader = <Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' />
 
-    function render() {
-
-        if(posts.length===0) return;
-        
-        posts.map(post => {
-            items.push(
-                <PostBox
-                imgSrc={post.linkImage}
-                link={post.link}
-                linkDescription={post.linkDescription}
-                linkTitle={post.linkTitle}
-                text={post.text}
-                user={post.user}
-                postId={post.id}
-                postLikes={post.likes}
-                key={post.id}
-                />
-            );
-        });
-    }render();
+    render(posts, items);
 
     function load() {
         if(posts.length<10) return;

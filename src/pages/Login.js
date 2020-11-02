@@ -30,7 +30,7 @@ export default function Login() {
         request.then(response => {
             const data = response.data;
             setUserInfo({ ...userInfo, data });
-            history.push('/Timeline');
+            history.push('/timeline');
         });
 
         request.catch(() => {

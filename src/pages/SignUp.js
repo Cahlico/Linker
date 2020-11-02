@@ -32,7 +32,7 @@ export default function SignUp() {
         request.then(response => {
             const data = response.data;
             setUserInfo({...userInfo, data});
-            history.push('/Timeline');
+            history.push('/timeline');
         });
 
         request.catch(() => {

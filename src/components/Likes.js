@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { IoIosHeartEmpty, IoIosHeart } from 'react-icons/io';
 import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
@@ -11,20 +11,19 @@ export default function Likes(props) {
     const { userInfo, refresh , setRefresh } = useContext(UserContext);
     const userData = userInfo.data;
     const { id, username } = userData.user;
-    let [selected, setSelected] = useState(false);
+    const [selected, setSelected] = useState(false);
     const { postId, postUsername, userId, postLikes } = props;
     const likeObj = { id:userId, username: postUsername };
 
-    postLikes.forEach((i) => {
-        if(id === i.userId || id === i.id) selected = true;
-    });
-
-    console.log(postLikes);
+    useEffect(() => {
+        postLikes.forEach((i) => {
+            if((id === i.userId || id === i.id)) setSelected(true);
+        });
+    }, []);
     
     function setLikes(type) {
 
         let request;
-
         if(type === 'like') {
             request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}/like`, likeObj, {headers: {"User-Token": userData.token }});
         } else {
@@ -32,7 +31,6 @@ export default function Likes(props) {
         }
 
         request.then(() => setRefresh(!refresh));
-
         setSelected(!selected);
     }
 
