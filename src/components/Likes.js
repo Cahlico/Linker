@@ -45,6 +45,7 @@ export default function Likes(props) {
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
                     <ReactTooltip />
+                    <strong>{postLikes.length} likes</strong>
                 </>
                 : <>
                     <IoIosHeartEmpty 
@@ -53,6 +54,7 @@ export default function Likes(props) {
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
                     <ReactTooltip />
+                    <strong>{postLikes.length} likes</strong>
                 </>
             }
         </>

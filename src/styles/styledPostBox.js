@@ -41,6 +41,12 @@ export const PostContainer = styled.div`
         }
     }
 
+    strong {
+        position: absolute;
+        top: 115px;
+        left: 25px;
+    }
+
     @media(max-width: 600px) {
         width: 100vw;
         border-radius: 2px;
