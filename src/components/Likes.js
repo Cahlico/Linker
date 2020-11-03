@@ -11,6 +11,7 @@ export default function Likes(props) {
     const { userInfo, refresh , setRefresh } = useContext(UserContext);
     const userData = userInfo.data;
     const { id, username } = userData.user;
+    const [mylike, setMylike] = useState(0);
     const [selected, setSelected] = useState(false);
     const { postId, postUsername, userId, postLikes } = props;
     const likeObj = { id:userId, username: postUsername };
@@ -30,6 +31,7 @@ export default function Likes(props) {
             request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}/dislike`, likeObj, {headers: {"User-Token": userData.token }});
         }
 
+        setMylike(!mylike);
         request.then(() => setRefresh(!refresh));
         setSelected(!selected);
     }
@@ -45,7 +47,7 @@ export default function Likes(props) {
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
                     <ReactTooltip />
-                    <strong>{postLikes.length} likes</strong>
+                    <strong>{postLikes.length + mylike} likes</strong>
                 </>
                 : <>
                     <IoIosHeartEmpty 
@@ -55,7 +57,7 @@ export default function Likes(props) {
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
                     <ReactTooltip />
-                    <strong>{postLikes.length} likes</strong>
+                    <strong>{postLikes.length + mylike} likes</strong>
                 </>
             }
         </>

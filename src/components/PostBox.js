@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../contexts/UserContext';
 import { Link, useHistory } from 'react-router-dom';
 import ReactHashtag from "react-hashtag";
-import { IoMdTrash } from 'react-icons/io';
 import { FiEdit } from 'react-icons/fi';
 
 import { PostContainer, Avatar, LinkContainer } from '../styles/styledPostBox';
 import Likes from './Likes';
+import Delete from './Delete';
 
 export default function PostBox(props) {
 
+    const { userInfo } = useContext(UserContext);
+    const userData = userInfo.data;
+    const myId = userData.user.id;
     const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes } = props;
     const { id, username, avatar } = user;
     const history = useHistory();
@@ -32,7 +36,16 @@ export default function PostBox(props) {
                     <Link to={{ pathname:`/UserPosts:${id}`, state: { id, username }}} >
                         <h3>{username}</h3>
                     </Link>
-                    <div><FiEdit/><IoMdTrash/></div>
+                    <div>
+                        {
+                            myId === id
+                                ? <>
+                                    <FiEdit/>
+                                    <Delete postId={postId} />
+                                </>
+                                : ''
+                        }
+                    </div>
                 </div>
                 
                 <p>

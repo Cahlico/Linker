@@ -28,7 +28,10 @@ export default function UserPosts() {
             <MainContainer>
                 {id === userId
                     ? <span><h1>My posts</h1></span>
-                    : <span><h1>{username}'s posts</h1></span>
+                    : <span>
+                        <h1>{username}'s posts</h1>
+                        <button>follow</button>
+                    </span>
                 }
                 <TrendingTopics  userData = {userData} />
                 <PostList userData={userData} id={id} />
