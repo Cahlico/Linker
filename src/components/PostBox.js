@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ReactHashtag from "react-hashtag";
+import { IoMdTrash } from 'react-icons/io';
+import { FiEdit } from 'react-icons/fi';
 
 import { PostContainer, Avatar, LinkContainer } from '../styles/styledPostBox';
 import Likes from './Likes';
@@ -18,6 +20,7 @@ export default function PostBox(props) {
     
     return (
         <PostContainer>
+
             <Link to={{ pathname:`/UserPosts:${id}`, state: { id, username }}} >
                 <Avatar src={avatar} />
             </Link>
@@ -25,10 +28,13 @@ export default function PostBox(props) {
             <Likes postId={postId} username={username} userId={id} postLikes={postLikes} />
         
             <div>
-                <Link to={{ pathname:`/UserPosts:${id}`, state: { id, username }}} >
-                    <h3>{username}</h3>
-                </Link>
-
+                <div>
+                    <Link to={{ pathname:`/UserPosts:${id}`, state: { id, username }}} >
+                        <h3>{username}</h3>
+                    </Link>
+                    <div><FiEdit/><IoMdTrash/></div>
+                </div>
+                
                 <p>
                     <ReactHashtag
                         onHashtagClick={hashtagValue => goToHashtagPage(hashtagValue)}

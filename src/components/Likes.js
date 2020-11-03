@@ -40,7 +40,7 @@ export default function Likes(props) {
                 ? <>
                     <IoIosHeart 
                         onClick={() => setLikes('dislike')}
-                        className='selected'
+                        className='selected likes'
                         data-tip={showLikes(selected, username, postLikes)}
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
@@ -49,6 +49,7 @@ export default function Likes(props) {
                 : <>
                     <IoIosHeartEmpty 
                         onClick={() => setLikes('like')}
+                        className='likes'
                         data-tip={showLikes(selected, username, postLikes)}
                         onMouseOver={() => {ReactTooltip.show() }}
                     />

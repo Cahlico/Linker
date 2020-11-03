@@ -11,6 +11,11 @@ export const PostContainer = styled.div`
     position: relative;
     overflow-wrap: anywhere;
 
+    div > div {
+        display: flex;
+        justify-content: space-between;
+    }
+
     h3 {
         color: #FFF;
         font-weight:300;
@@ -29,12 +34,15 @@ export const PostContainer = styled.div`
     }
 
     svg {
-        position: absolute;
-        top: 80px;
-        left: 32px;
         cursor: pointer;
         font-size: 26px;
         color: #FFF;
+
+        &.likes {
+            position: absolute;
+            top: 80px;
+            left: 32px;
+        }
 
         &.selected {
             color: #f0293d;
