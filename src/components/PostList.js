@@ -1,17 +1,16 @@
 import React, { useEffect, useState, useContext } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import UserContext from '../contexts/UserContext';
 import { receivePosts } from '../functions/receivePosts';
 import { render } from '../functions/render';
+import { getPostsFromServer } from '../functions/getPostsFromServer';
+import { WarningMessage, Load } from '../styles/styledPostList';
 
 export default function PostList(props) {
 
     const { refresh , setRefresh, myPost, setMyPost } = useContext(UserContext);
     const { userData, id, hashtag, liked } = props;
-    let request;
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -22,15 +21,7 @@ export default function PostList(props) {
 
     useEffect(() => {
 
-        if(id === null) {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
-        } else if (id && liked) {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/liked`, {headers: {"User-Token": userData.token }});
-        } else if(hashtag) {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/hashtags/${hashtag}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});
-        } else {
-            request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/${id}/posts?offset=${offset}&limit=11`, {headers: {"User-Token": userData.token }});            
-        }
+        const request = getPostsFromServer(id, liked, hashtag, userData, offset);
 
         request.then(response => {
             setLoading(false);
@@ -71,18 +62,3 @@ export default function PostList(props) {
         </>
     );
 }
-
-const WarningMessage = styled.h4`
-    text-align: center;
-    font-size: 56px;
-    color: #FFF;
-`;
-
-const Load = styled.img`
-    width: 15vw;
-    margin: 0 20vw;
-
-    @media (max-width: 600px) {
-        width: 60vw;
-    }
-`;
