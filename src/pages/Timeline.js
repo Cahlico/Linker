@@ -12,7 +12,9 @@ import { MainContainer } from '../styles/styledTimeline'
 export default function Timeline() {
     
     const { userInfo } = useContext(UserContext);
+    
     const userData = userInfo.data;
+
     if(userData === undefined) {
         window.location = "http://localhost:9000";
     }

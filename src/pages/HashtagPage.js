@@ -15,6 +15,7 @@ export default function HashtagPage() {
     const userData = userInfo.data;
     const { state } = useLocation();
     const hashtag = state;
+    
     if(userData === undefined) {
         window.location = "http://localhost:9000";
     }

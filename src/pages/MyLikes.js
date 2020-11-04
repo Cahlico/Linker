@@ -15,6 +15,7 @@ export default function MyLikes() {
     const { state } = useLocation();
     const { id } = state;
     const liked = true;
+    
     if(userData === undefined) {
         window.location = "http://localhost:9000";
     }

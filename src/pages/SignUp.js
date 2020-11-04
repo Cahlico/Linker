@@ -15,6 +15,8 @@ export default function SignUp() {
     const { userInfo, setUserInfo } = useContext(UserContext);
     const history = useHistory();
 
+    if(localStorage.data !== undefined) history.push('/timeline');
+
     function sendRequest(event) {
         event.preventDefault();
 

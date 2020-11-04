@@ -21,7 +21,7 @@ export default function UserPosts() {
     const userId = userData.user.id;
     const { avatar } = userData.user;
 
-    if(userData === undefined) {
+    if(userData === undefined)  {
         window.location = "http://localhost:9000";
     }
 
