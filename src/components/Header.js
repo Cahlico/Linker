@@ -1,29 +1,80 @@
-import React, { useState, useContext } from 'react'
-import {BsChevronDown,BsChevronUp} from 'react-icons/bs';
-import styled from 'styled-components';
+import React, { useState, useEffect, useContext } from 'react'
+import  { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import { IoMdSearch } from 'react-icons/io';
 import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { DebounceInput } from 'react-debounce-input';
 
-import UserContext from '../contexts/UserContext'
-import { HeaderContainer } from '../styles/styledTimeline'
+import { HeaderContainer, Menu, SearchContainer, UsersContainer } from '../styles/styledHeader';
+import UserContext from '../contexts/UserContext';
 
 export default function Header(props) {
+    const { userInfo } = useContext(UserContext);
+    const userData = userInfo.data;
     const { avatar, id, username } = props;
     const [isDroped,setIsDroped] = useState(false);
     const history = useHistory();
+    const [focus, setFocus] = useState(false);
+    const [search, setSearch] = useState('');
+    const [searchedUsers, setSearchedUsers] = useState([]);
 
-    function dropDownMenu () {
-        setIsDroped(!isDroped);
-    }
+    useEffect(() => {
 
-    function logout() {
-        history.push('/');
-    }
+        if(search.length < 3) {
+            setSearchedUsers([]);
+            return;
+        }
+
+        const request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/users/search?username=${search}`, {headers: {"User-Token": userData.token}});
+
+        request.then(response => {
+            let followed = [];
+            let unfollowed = [];
+            response.data.users.forEach(i => {
+                if(i.id === id);
+                else if(i.isFollowingLoggedUser) {
+                    followed.push(i);
+                } else {
+                    unfollowed.push(i);
+                }
+            });
+            setSearchedUsers([...followed, ...unfollowed]);
+        });
+    }, [search]);
 
     return (
         <>
             <HeaderContainer>
                 <h1><Link to ="/timeline" >linkr</Link></h1>
-                <div onClick={dropDownMenu}>
+                <SearchContainer>
+                    <DebounceInput
+                        placeholder= {focus ? '' : 'Search for people and friends'}
+                        onFocus={() => setFocus(true)}
+                        onBlur={() => setFocus(false)}
+                        minLength={3}
+                        debounceTimeout={300}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    {focus
+                        ? ''
+                        : <IoMdSearch />
+                    }
+                    <UsersContainer>
+                        {searchedUsers.length 
+                            ? searchedUsers.map(u => (
+                                (u.isFollowingLoggedUser)
+                                    ? <Link to={{ pathname:`/UserPosts:${u.id}`, state: { id: u.id , username: u.username }}}><img src={u.avatar} />
+                                        <p>{u.username} <span>• following</span></p>
+                                    </Link>
+                                    : <Link to={{ pathname:`/UserPosts:${u.id}`, state: { id: u.id , username: u.username }}}><img src={u.avatar} />
+                                        <p>{u.username}</p>
+                                    </Link>
+                            ))
+                            : ''
+                        }
+                    </UsersContainer>
+                </SearchContainer>
+                <div onClick={() => setIsDroped(!isDroped)} className='show-menu'>
                     {isDroped
                         ? <BsChevronUp/>
                         : <BsChevronDown/>
@@ -35,45 +86,8 @@ export default function Header(props) {
                 <Link 
                 to={{ pathname:`/UserPosts:my-posts`, state: { id, username }}} >My posts</Link>
                 <Link to={{ pathname:`/my-likes`, state: { id }}} >My likes</Link>
-                <button onClick={logout}>Logout</button>
+                <button onClick={() => history.push('/')}>Logout</button>
             </Menu>
         </>
     )
 }
-
-const Menu = styled.div `
-    position: fixed;
-    font-family: 'Lato',sans-serif;
-    font-size:17px;
-    background: #171717;
-    right: 0;
-    top: ${props=>props.isDroped?"63px":"-34px"};
-    transition: top .5s ease-in-out;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding: 17px;
-    color:white;
-    border-radius: 0px 0px 0px 20px;
-    z-index:10;
-
-    a {
-        color:inherit;
-        display:block;
-    }
-
-    a:first-child { 
-        margin-bottom: 5px;
-    }
-
-    button {
-        font-family: inherit;
-        font-size: inherit;
-        color: inherit;
-        background: none;
-        border: none;
-        padding: 0;
-        margin-top: 2px;
-        cursor: pointer;
-    }
-`

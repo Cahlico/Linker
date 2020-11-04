@@ -25,7 +25,7 @@ export default function InputPost(props) {
         setClicked(true);
         setLabel('Publicando...');
 
-        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts",{ link , text },{headers: {"User-Token": token}});
+        const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts",{ link , text }, {headers: {"User-Token": token}});
 
         request.then(() => {
             setClicked(false);
