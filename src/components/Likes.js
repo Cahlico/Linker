@@ -11,6 +11,7 @@ export default function Likes(props) {
     const { userInfo, refresh , setRefresh } = useContext(UserContext);
     const userData = userInfo.data;
     const { id, username } = userData.user;
+    const [mylike, setMylike] = useState(0);
     const [selected, setSelected] = useState(false);
     const { postId, postUsername, userId, postLikes } = props;
     const likeObj = { id:userId, username: postUsername };
@@ -26,8 +27,10 @@ export default function Likes(props) {
         let request;
         if(type === 'like') {
             request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}/like`, likeObj, {headers: {"User-Token": userData.token }});
+            setMylike(mylike + 1);
         } else {
             request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}/dislike`, likeObj, {headers: {"User-Token": userData.token }});
+            setMylike(mylike - 1);
         }
 
         request.then(() => setRefresh(!refresh));
@@ -40,12 +43,12 @@ export default function Likes(props) {
                 ? <>
                     <IoIosHeart 
                         onClick={() => setLikes('dislike')}
-                        className='selected likes'
+                        className='redColored likes'
                         data-tip={showLikes(selected, username, postLikes)}
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
                     <ReactTooltip />
-                    <strong>{postLikes.length} likes</strong>
+                    <strong>{postLikes.length + mylike} likes</strong>
                 </>
                 : <>
                     <IoIosHeartEmpty 
@@ -55,7 +58,7 @@ export default function Likes(props) {
                         onMouseOver={() => {ReactTooltip.show() }}
                     />
                     <ReactTooltip />
-                    <strong>{postLikes.length} likes</strong>
+                    <strong>{postLikes.length + mylike} likes</strong>
                 </>
             }
         </>

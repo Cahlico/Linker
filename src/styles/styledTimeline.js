@@ -52,12 +52,32 @@ export const MainContainer = styled.main `
     align-items: flex-start;
 
     & > span {
-        color:white;
-        font-weight:bold;
-        font-size:43px;
+        color: #FFF;
+        font-weight: bold;
+        font-size: 43px;
         font-family: 'Oswald' , sans-serif;
-        margin-bottom:25px;
+        margin-bottom: 25px;
         padding: 30px 0 20px 0;
+        width: 86%;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            border: none;
+            color: #FFF;
+            border-radius: 3px;
+            height: 30px;
+            width: 100px;
+            outline-style: none;
+            font-size: 14px;
+            background-color: #1877F2;
+            margin-top: 20px;
+
+            &.unfollow {
+                background-color: #FFF;
+                color: #1877F2;
+            }
+        }
     }
 
     @media(max-width: 600px) {

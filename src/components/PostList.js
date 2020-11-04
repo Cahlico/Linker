@@ -17,7 +17,6 @@ export default function PostList(props) {
     let items = []
     const [offset, setOffset] = useState(0);
     const [more, setMore] = useState(false);
-    
 
     useEffect(() => {
 

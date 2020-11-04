@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import UserContext from '../contexts/UserContext';
 import { Link, useHistory } from 'react-router-dom';
 import ReactHashtag from "react-hashtag";
-import { IoMdTrash } from 'react-icons/io';
 import { FiEdit } from 'react-icons/fi';
 
 import { PostContainer, Avatar, LinkContainer } from '../styles/styledPostBox';
 import Likes from './Likes';
 import Edit from './Edit';
+import Delete from './Delete';
 
 export default function PostBox(props) {
 
+    const { userInfo } = useContext(UserContext);
+    const userData = userInfo.data;
+    const myId = userData.user.id;
     const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes } = props;
     const { id, username, avatar } = user;
     const [postText, setPostText] = useState(text);
@@ -19,10 +23,6 @@ export default function PostBox(props) {
     function goToHashtagPage(hashtagValue) {
         hashtagValue = hashtagValue.slice(1);
         history.push(`/HashtagPage:${hashtagValue}`, hashtagValue);
-    }
-
-    function focus() {
-        setEdit(!edit);
     }
     
     return (
@@ -40,8 +40,14 @@ export default function PostBox(props) {
                         <h3>{username}</h3>
                     </Link>
                     <div>
-                        <FiEdit onClick={focus}/>
-                        <IoMdTrash/>
+                        {
+                            myId === id
+                                ? <>
+                                    <FiEdit onClick={setEdit(!edit)} />
+                                    <Delete postId={postId} />
+                                </>
+                                : ''
+                        }
                     </div>
                 </div>
                 
