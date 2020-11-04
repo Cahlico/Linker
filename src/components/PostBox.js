@@ -57,7 +57,7 @@ export default function PostBox(props) {
                         setEdit={setEdit}
                         postId={postId}
                         setPostText={setPostText}
-                        />
+                      />
                     : <p>
                         <ReactHashtag
                             onHashtagClick={hashtagValue => goToHashtagPage(hashtagValue)}

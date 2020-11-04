@@ -31,8 +31,6 @@ export default function PostList(props) {
         
     }, [refresh]);
 
-    const loader = <Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' />
-
     render(posts, items);
 
     function load() {
@@ -52,7 +50,7 @@ export default function PostList(props) {
                         : <InfiniteScroll
                             loadMore={load}
                             hasMore={more}
-                            loader={<Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' />}
+                            loader={<Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' key={0} />}
                           >
                           {items}
                         </InfiniteScroll>

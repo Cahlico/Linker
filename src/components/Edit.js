@@ -13,13 +13,16 @@ export default function Edit (props) {
 
     function keyPressed(event) {
         if(disable) return;
-        
+
         if(event.keyCode===27) setEdit(false);
 
         if(event.keyCode===13) {
             event.preventDefault();
+
             const request = axios.put(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}`,{text:inputText.trim()},{headers: {"User-Token": userData.token}});
+
             setDisable(true);
+
             request.then(() => {
                 setDisable(false);
                 setEdit(false);
