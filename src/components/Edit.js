@@ -2,11 +2,13 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
 import UserContext from '../contexts/UserContext';
+import RefreshContext from '../contexts/RefreshContext';
 
 export default function Edit (props) {
     
     const { postText, setEdit, postId, setPostText } = props;
-    const { userInfo, refresh, setRefresh } = useContext(UserContext);
+    const { userInfo } = useContext(UserContext);
+    const { refresh, setRefresh } = useContext(RefreshContext);
     const userData = userInfo.data;
     const [ inputText, setInputText ] = useState(postText);
     const [ disable, setDisable ] = useState(false)
@@ -23,14 +25,13 @@ export default function Edit (props) {
 
             setDisable(true);
 
-            request.then(response=>{
+            request.then(() => {
                 setDisable(false);
                 setEdit(false);
                 setPostText(inputText.trim());
                 setRefresh(!refresh);
             });
-            
-            request.catch(response=>{
+            request.catch(() => {
                 setDisable(false);
                 alert("Não foi possível salvar as alterações");
             })

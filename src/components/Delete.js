@@ -5,13 +5,15 @@ import axios from 'axios';
 
 import { modalStyles, DeleteScreen, Load } from '../styles/styledModal';
 import UserContext from '../contexts/UserContext';
+import RefreshContext from '../contexts/UserContext';
 
 export default function Delete(props) {
 
     const [modalIsOpen, setIsOpen] = useState(false);
     const { postId } = props
     const [loading, setLoading] = useState(false);
-    const { userInfo, refresh, setRefresh } = useContext(UserContext);
+    const { userInfo } = useContext(UserContext);
+    const { refresh, setRefresh } = useContext(RefreshContext);
     const userData = userInfo.data;
 
     function openModal() {

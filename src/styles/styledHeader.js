@@ -103,7 +103,7 @@ export const SearchContainer = styled.div`
 
 export const UsersContainer = styled.div`
     width: 38vw;
-    padding: 42px 10px 0px;
+    padding: 40px 10px 0px;
     border-radius: 5px;
     font-size: 16px;
     background-color: #E7E7E7;
@@ -114,7 +114,8 @@ export const UsersContainer = styled.div`
 
     a {
         display: block;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        z-index: 10;
     }
 
     img, p span {

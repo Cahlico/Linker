@@ -5,10 +5,12 @@ import axios from 'axios';
 
 import UserContext from '../contexts/UserContext';
 import { showLikes } from '../functions/showLikes';
+import RefreshContext from '../contexts/RefreshContext';
 
 export default function Likes(props) {
 
-    const { userInfo, refresh , setRefresh } = useContext(UserContext);
+    const { userInfo } = useContext(UserContext);
+    const { refresh, setRefresh } = useContext(RefreshContext);
     const userData = userInfo.data;
     const { id, username } = userData.user;
     const [mylike, setMylike] = useState(0);

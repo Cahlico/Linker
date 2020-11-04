@@ -42,6 +42,11 @@ export default function Header(props) {
         });
     }, [search]);
 
+    function resetInput() {
+        setFocus(false);
+        //setTimeout(setSearchedUsers([]), 100);
+    }
+
     return (
         <>
             <HeaderContainer>
@@ -50,7 +55,7 @@ export default function Header(props) {
                     <DebounceInput
                         placeholder= {focus ? '' : 'Search for people and friends'}
                         onFocus={() => setFocus(true)}
-                        onBlur={() => setFocus(false)}
+                        onBlur={() => resetInput()}
                         minLength={3}
                         debounceTimeout={300}
                         onChange={(e) => setSearch(e.target.value)}
@@ -61,12 +66,14 @@ export default function Header(props) {
                     }
                     <UsersContainer>
                         {searchedUsers.length 
-                            ? searchedUsers.map(u => (
+                            ? searchedUsers.map((u, i) => (
                                 (u.isFollowingLoggedUser)
-                                    ? <Link to={{ pathname:`/UserPosts:${u.id}`, state: { id: u.id , username: u.username }}}><img src={u.avatar} />
+                                    ? <Link to={{ pathname:`/UserPosts:${u.id}`, state: { id: u.id , username: u.username }}} key={u.id} >
+                                        <img src={u.avatar} />
                                         <p>{u.username} <span>• following</span></p>
                                     </Link>
-                                    : <Link to={{ pathname:`/UserPosts:${u.id}`, state: { id: u.id , username: u.username }}}><img src={u.avatar} />
+                                    : <Link to={{ pathname:`/UserPosts:${u.id}`, state: { id: u.id , username: u.username }}} key={i}>
+                                        <img src={u.avatar} />
                                         <p>{u.username}</p>
                                     </Link>
                             ))

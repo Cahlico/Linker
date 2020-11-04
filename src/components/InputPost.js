@@ -3,10 +3,12 @@ import axios from 'axios';
 
 import { InputContainer } from '../styles/styledTimeline';
 import UserContext from '../contexts/UserContext';
+import RefreshContext from '../contexts/RefreshContext';
 
 export default function InputPost(props) {
     const { token, user } = props.userData;
-    const { refresh , setRefresh, setMyPost } = useContext(UserContext)
+    const { setMyPost } = useContext(UserContext);
+    const { refresh, setRefresh } = useContext(RefreshContext);
     const [link,setLink] = useState('');
     const [text,setText] = useState('');
     const [clicked,setClicked] = useState(false);
