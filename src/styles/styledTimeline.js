@@ -1,48 +1,5 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.header `
-    position:fixed;
-    top:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#151515;
-    padding:5px 20px;
-    z-index:100;
-
-    h1 {
-        font-family: 'Passion one', sans-serif;
-        font-weight:bold;
-        color:white;
-        font-size:49px;
-    }
-
-    a {
-        color: inherit;
-    }
-
-    & > div {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    img {
-        width:53px;
-        height:53px;
-        border-radius:50%;
-        cursor: pointer;
-    }
-    
-    svg {
-        color: white;
-        margin-right: 5px;
-        cursor: pointer;
-        font-size: 25px;
-    }
-`
-
 export const MainContainer = styled.main `
     padding-top: 100px;
     padding-left: 17vw;
@@ -90,7 +47,7 @@ export const MainContainer = styled.main `
             margin-bottom: 10px;
         }
     }
-`
+`;
 
 export const InputContainer = styled.article `
     background: #FFF;
@@ -169,7 +126,7 @@ export const InputContainer = styled.article `
         border-radius: 2px;
         margin-bottom: 0px;
     }
-`
+`;
 
 export const TrendContainer = styled.aside ` 
     background: #171717;
@@ -219,12 +176,4 @@ export const TrendContainer = styled.aside `
     @media (max-width: 600px) {
         display: none;
     }
-`
-
-
-
-
-
-
-
-
+`;

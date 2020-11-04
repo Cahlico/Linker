@@ -24,7 +24,6 @@ export default function Edit (props) {
             setDisable(true);
 
             request.then(response=>{
-                console.log(response);
                 setDisable(false);
                 setEdit(false);
                 setPostText(inputText.trim());
@@ -32,7 +31,6 @@ export default function Edit (props) {
             });
             
             request.catch(response=>{
-                console.log(response);
                 setDisable(false);
                 alert("Não foi possível salvar as alterações");
             })
@@ -48,8 +46,5 @@ export default function Edit (props) {
         onKeyDown={e=>keyPressed(e)}
         disabled={disable}               
         />
-    )
-            
-                  
-    
+    )  
 }
