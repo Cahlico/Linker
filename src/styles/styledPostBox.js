@@ -23,6 +23,19 @@ export const PostContainer = styled.div`
         margin-bottom:10px;
     }
     
+    textarea {
+        display: block;
+        color: #4C4C4C;
+        background: white;
+        outline: none;
+        border: none;
+        border-radius: 3px;
+        resize:none;
+        font-family:inherit;
+        font-size:16px;
+        width:95%;
+    }
+
     p {
         color: #B7B7B7;
     }
