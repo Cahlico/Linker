@@ -43,7 +43,7 @@ export default function PostBox(props) {
                         {
                             myId === id
                                 ? <>
-                                    <FiEdit onClick={setEdit(!edit)} />
+                                    <FiEdit onClick={()=>setEdit(!edit)} />
                                     <Delete postId={postId} />
                                 </>
                                 : ''
@@ -57,7 +57,7 @@ export default function PostBox(props) {
                         setEdit={setEdit}
                         postId={postId}
                         setPostText={setPostText}
-                        />
+                      />
                     : <p>
                         <ReactHashtag
                             onHashtagClick={hashtagValue => goToHashtagPage(hashtagValue)}
