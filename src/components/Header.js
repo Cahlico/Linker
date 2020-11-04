@@ -86,7 +86,14 @@ export default function Header(props) {
                 <Link 
                 to={{ pathname:`/UserPosts:my-posts`, state: { id, username }}} >My posts</Link>
                 <Link to={{ pathname:`/my-likes`, state: { id }}} >My likes</Link>
-                <button onClick={() => history.push('/')}>Logout</button>
+                <button 
+                    onClick={() => {
+                        history.push('/');
+                        localStorage.clear();
+                    }}
+                >
+                    Logout
+                </button>
             </Menu>
         </>
     )

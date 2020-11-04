@@ -13,6 +13,9 @@ export default function Login() {
     const { userInfo, setUserInfo } = useContext(UserContext);
     const history = useHistory();
 
+    if(localStorage.data !== undefined) history.push('/timeline');
+    
+
     function sendRequest(event) {
         event.preventDefault();
 
@@ -30,6 +33,8 @@ export default function Login() {
         request.then(response => {
             const data = response.data;
             setUserInfo({ ...userInfo, data });
+            const jsonData = JSON.stringify({data});
+            localStorage.data = jsonData;            
             history.push('/timeline');
         });
 

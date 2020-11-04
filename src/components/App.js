@@ -5,8 +5,8 @@ import UserContext from '../contexts/UserContext';
 import { AnimatedSwitch } from './AnimatedSwitch';
 
 export default function App() {
-
-    const [userInfo, setUserInfo] = useState({});
+    const localData = localStorage.data !== undefined ? JSON.parse(localStorage.data) : {};
+    const [userInfo, setUserInfo] = useState(localData);
     const [refresh, setRefresh] = useState(false);
     const [myPost, setMyPost] = useState(false);
     return (
