@@ -20,13 +20,13 @@ export default function Edit (props) {
             event.preventDefault();
             const request = axios.put(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}`,{text:inputText.trim()},{headers: {"User-Token": userData.token}});
             setDisable(true);
-            request.then(response=>{
+            request.then(() => {
                 setDisable(false);
                 setEdit(false);
                 setPostText(inputText.trim());
                 setRefresh(!refresh);
             });
-            request.catch(response=>{
+            request.catch(() => {
                 setDisable(false);
                 alert("Não foi possível salvar as alterações");
             })
