@@ -44,7 +44,7 @@ export const PostContainer = styled.div`
             left: 32px;
         }
 
-        &.selected {
+        &.redColored {
             color: #f0293d;
         }
     }

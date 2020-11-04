@@ -4,9 +4,6 @@ export function showLikes(selected, username, postLikes) {
 
     if(selected) {
         switch(postLikes.length) {
-            case 0:
-                likeNums = 'no likes yet';
-                break;
             case 1:
                 likeNums = `you liked the post`;
                 break;

@@ -41,7 +41,7 @@ export default function Delete(props) {
     
     return (
         <>
-            <IoMdTrash onClick={openModal}/>
+            <IoMdTrash onClick={openModal} className='redColored' />
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

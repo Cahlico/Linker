@@ -27,11 +27,12 @@ export default function Likes(props) {
         let request;
         if(type === 'like') {
             request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}/like`, likeObj, {headers: {"User-Token": userData.token }});
+            setMylike(mylike + 1);
         } else {
             request = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}/dislike`, likeObj, {headers: {"User-Token": userData.token }});
+            setMylike(mylike - 1);
         }
 
-        setMylike(!mylike);
         request.then(() => setRefresh(!refresh));
         setSelected(!selected);
     }
@@ -42,7 +43,7 @@ export default function Likes(props) {
                 ? <>
                     <IoIosHeart 
                         onClick={() => setLikes('dislike')}
-                        className='selected likes'
+                        className='redColored likes'
                         data-tip={showLikes(selected, username, postLikes)}
                         onMouseOver={() => {ReactTooltip.show() }}
                     />

@@ -72,6 +72,11 @@ export const MainContainer = styled.main `
             font-size: 14px;
             background-color: #1877F2;
             margin-top: 20px;
+
+            &.unfollow {
+                background-color: #FFF;
+                color: #1877F2;
+            }
         }
     }
 
