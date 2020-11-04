@@ -1,9 +1,11 @@
 import React,{ useState, useContext } from 'react'
 import axios from 'axios';
+import { IoIosPin } from 'react-icons/io';
 
 import { InputContainer } from '../styles/styledTimeline';
 import UserContext from '../contexts/UserContext';
 import RefreshContext from '../contexts/RefreshContext';
+import { getLocation } from '../functions/getLocation';
 
 export default function InputPost(props) {
     const { token, user } = props.userData;
@@ -13,7 +15,8 @@ export default function InputPost(props) {
     const [text,setText] = useState('');
     const [clicked,setClicked] = useState(false);
     const [label,setLabel] = useState('Publicar')
-
+    const [activated, setActivated] = useState(false);
+    const [location, setLocation] = useState({});
     
     function publish() {
 
@@ -36,14 +39,16 @@ export default function InputPost(props) {
             setText('');
             setMyPost(true);
             setRefresh(!refresh);
-        })
+        });
 
-        request.catch(( )=> {
+        request.catch(() => {
             alert("Houve um erro ao publicar o seu link");
             setClicked(false);
             setLabel('Publicar');
-        })
+        });
     }
+
+    console.log(location);
 
     return (
         <>
@@ -62,7 +67,19 @@ export default function InputPost(props) {
                     onChange={e => setText(e.target.value)}
                     value={text}
                     />
-                    <div><button onClick={publish}>{label}</button></div>
+                    <div>
+                        {activated
+                            ? <span onClick={() => getLocation(activated, setActivated, setLocation)}>
+                                <IoIosPin className='activated' /> 
+                                <p className='activated'>Localização ativada</p>
+                            </span>
+                            : <span onClick={() => getLocation(activated, setActivated, setLocation)}>
+                                <IoIosPin /> 
+                                <p>Localização desativada</p>
+                            </span>
+                        }
+                        <button onClick={publish}>{label}</button>
+                    </div>
                 </div>
             </InputContainer>
         </>

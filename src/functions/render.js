@@ -2,6 +2,7 @@ import React from 'react';
 import PostBox from '../components/PostBox';
 
 export function render(posts, items) {
+    
     if(posts.length===0) return;
         
     posts.map(post => {

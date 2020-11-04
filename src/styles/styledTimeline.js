@@ -104,7 +104,20 @@ export const InputContainer = styled.article `
 
     div div {
         display:flex;
-        justify-content:flex-end;
+        justify-content: space-between;
+    }
+
+    div div span {
+        display: flex;
+
+        svg, p {
+            margin-top: 8px;
+            color: #eb4034;
+        }
+
+        .activated {
+            color: #25cc35;
+        }
     }
 
     button {

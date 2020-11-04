@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import UserContext from '../contexts/UserContext';
-
 import Header from '../components/Header';
 import TrendingTopics from '../components/TrendingTopics';
 import PostList from '../components/PostList';

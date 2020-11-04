@@ -57,7 +57,7 @@ export default function TrendingTopics(props) {
                   )}  
             </ul>    
         </TrendContainer>
-    )
+    );
 }
 
 const HashtagSearch = styled.form `
@@ -80,4 +80,4 @@ const HashtagSearch = styled.form `
         padding: 5px 5px;
     }
     
-`
+`;
