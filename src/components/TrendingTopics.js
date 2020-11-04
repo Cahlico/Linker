@@ -3,14 +3,14 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
 import { TrendContainer } from '../styles/styledTimeline';
-import UserContext from '../contexts/UserContext';
 import styled from 'styled-components';
+import RefreshContext from '../contexts/RefreshContext';
 
 
 export default function TrendingTopics(props) {
     const { token } = props.userData;
 
-    const { refresh , setRefresh } = useContext(UserContext);
+    const { refresh , setRefresh } = useContext(RefreshContext);
 
     const [topics, setTopics] = useState([]);
     const [search, setSearch] = useState('');

@@ -6,10 +6,12 @@ import { receivePosts } from '../functions/receivePosts';
 import { render } from '../functions/render';
 import { getPostsFromServer } from '../functions/getPostsFromServer';
 import { WarningMessage, Load } from '../styles/styledPostList';
+import RefreshContext from '../contexts/RefreshContext';
 
 export default function PostList(props) {
 
-    const { refresh , setRefresh, myPost, setMyPost } = useContext(UserContext);
+    const { myPost, setMyPost } = useContext(UserContext);
+    const { refresh, setRefresh } = useContext(RefreshContext);
     const { userData, id, hashtag, liked } = props;
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
