@@ -21,14 +21,12 @@ export default function Edit (props) {
             const request = axios.put(`https://mock-api.bootcamp.respondeai.com.br/api/v1/linkr/posts/${postId}`,{text:inputText.trim()},{headers: {"User-Token": userData.token}});
             setDisable(true);
             request.then(response=>{
-                console.log(response);
                 setDisable(false);
                 setEdit(false);
                 setPostText(inputText.trim());
                 setRefresh(!refresh);
             });
             request.catch(response=>{
-                console.log(response);
                 setDisable(false);
                 alert("Não foi possível salvar as alterações");
             })
@@ -44,8 +42,5 @@ export default function Edit (props) {
         onKeyDown={e=>keyPressed(e)}
         disabled={disable}               
         />
-    )
-            
-                  
-    
+    )  
 }
