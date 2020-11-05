@@ -9,7 +9,11 @@ export const modalStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         backgroundColor: '#333333',
-        borderRadius: '50px'
+        borderRadius: '50px',
+        fontSize: '40px',
+        fontWeight: 'bold',
+        padding: '30px 20px',
+        color: '#FFF'
     }
 };
 
@@ -47,3 +51,9 @@ export const Load = styled.img`
         width: 60vw;
     }
 `;
+
+export const  containerStyle = {
+    width: '800px',
+    height: '300px',
+    marginTop: '20px'
+};

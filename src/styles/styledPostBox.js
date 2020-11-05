@@ -16,6 +16,10 @@ export const PostContainer = styled.div`
         justify-content: space-between;
     }
 
+    div > div > span {
+        display: flex;
+    }
+
     h3 {
         color: #FFF;
         font-weight:300;
@@ -59,6 +63,12 @@ export const PostContainer = styled.div`
 
         &.redColored {
             color: #f0293d;
+        }
+
+        &.locationPin {
+            font-size: 20px;
+            margin-left: 10px;
+            margin-top: 1px;
         }
     }
 

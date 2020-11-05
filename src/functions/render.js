@@ -3,8 +3,8 @@ import PostBox from '../components/PostBox';
 
 export function render(posts, items) {
     
-    if(posts.length===0) return;
-        
+    if(posts.length === 0) return;
+
     posts.map(post => {
         items.push(
             <PostBox
@@ -16,6 +16,7 @@ export function render(posts, items) {
                 user={post.user}
                 postId={post.id}
                 postLikes={post.likes}
+                geolocation={post.geolocation}
                 key={post.id}
             />
         );

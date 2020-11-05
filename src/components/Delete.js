@@ -6,6 +6,7 @@ import axios from 'axios';
 import { modalStyles, DeleteScreen, Load } from '../styles/styledModal';
 import UserContext from '../contexts/UserContext';
 import RefreshContext from '../contexts/UserContext';
+import { openModal, closeModal } from '../functions/modal';
 
 export default function Delete(props) {
 
@@ -15,14 +16,6 @@ export default function Delete(props) {
     const { userInfo } = useContext(UserContext);
     const { refresh, setRefresh } = useContext(RefreshContext);
     const userData = userInfo.data;
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
 
     function deletePost() {
         setLoading(true);
@@ -43,10 +36,10 @@ export default function Delete(props) {
     
     return (
         <>
-            <IoMdTrash onClick={openModal} className='redColored' />
+            <IoMdTrash onClick={() => openModal(setIsOpen)} className='redColored' />
             <Modal
                 isOpen={modalIsOpen}
-                onRequestClose={closeModal}
+                onRequestClose={() => closeModal(setIsOpen)}
                 style={modalStyles}
                 contentLabel="deletion confirmation"
             >
@@ -55,7 +48,7 @@ export default function Delete(props) {
                     {loading
                         ? <Load src='https://pa1.narvii.com/6534/a6fc552442c170aedda8e27af187b901602f7634_00.gif' />
                         : <>
-                            <button onClick={closeModal}>Cancelar</button>
+                            <button onClick={() => closeModal(setIsOpen)}>Cancelar</button>
                             <button onClick={() => deletePost()}>Excluir</button>
                         </>
                     }

@@ -8,13 +8,14 @@ import { PostContainer, Avatar, LinkContainer } from '../styles/styledPostBox';
 import Likes from './Likes';
 import Edit from './Edit';
 import Delete from './Delete';
+import LocationMap from './LocationMap';
 
 export default function PostBox(props) {
 
     const { userInfo } = useContext(UserContext);
     const userData = userInfo.data;
     const myId = userData.user.id;
-    const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes } = props;
+    const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes, geolocation } = props;
     const { id, username, avatar } = user;
     const [postText, setPostText] = useState(text);
     const [ edit, setEdit ] = useState(false);
@@ -36,9 +37,12 @@ export default function PostBox(props) {
         
             <div>
                 <div>
-                    <Link to={{ pathname:`/UserPosts:${id}`, state: { id, username }}} >
-                        <h3>{username}</h3>
-                    </Link>
+                    <span>
+                        <Link to={{ pathname:`/UserPosts:${id}`, state: { id, username }}} >
+                            <h3>{username}</h3>
+                        </Link>
+                        <LocationMap geolocation={geolocation} username={username} />
+                    </span>
                     <div>
                         {
                             myId === id
