@@ -20,5 +20,3 @@ export default function App() {
         </UserContext.Provider>
     );
 }
-
-//require('dotenv').config();

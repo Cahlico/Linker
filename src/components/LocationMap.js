@@ -5,15 +5,14 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 import { modalStyles, containerStyle, MapHeader } from '../styles/styledModal';
 import { openModal, closeModal } from '../functions/modal';
+import { apiKey } from '../api/api';
 
 export default function LocationMap(props) {
 
     const { username } = props;
     let latitude, longitude;
     const [modalIsOpen, setIsOpen] = useState(false);
-    const apiKey = 'AIzaSyDOztJhF_njfFybGT7LPA_eQszwINkqofI';
     const [ isShown, setIsShown ] = useState(true);
-
     if(props.geolocation !== undefined) {
         latitude = props.geolocation.latitude;
         longitude = props.geolocation.longitude
@@ -42,7 +41,6 @@ export default function LocationMap(props) {
                         mapContainerStyle={containerStyle}
                         center={myCoodinates}
                         zoom={14}
-                        
                     >
                         {isShown ? <Marker position={myCoodinates} onClick={() => setIsShown(false)} /> : ''}
                     </GoogleMap>

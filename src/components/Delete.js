@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { modalStyles, DeleteScreen, Load } from '../styles/styledModal';
 import UserContext from '../contexts/UserContext';
-import RefreshContext from '../contexts/UserContext';
+import RefreshContext from '../contexts/RefreshContext';
 import { openModal, closeModal } from '../functions/modal';
 
 export default function Delete(props) {

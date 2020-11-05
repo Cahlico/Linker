@@ -77,14 +77,15 @@ export const MapHeader = styled.div`
     }
 `;
 
-export let containerStyle = matchMedia("(min-width: 600px)") ? 
-                                                                    containerStyle = {
-                                                                        width: '88vw',
-                                                                        height: '240px',
-                                                                        marginTop: '20px',
-                                                                        marginLeft: '2vw'
-                                                                    } : containerStyle = {
-                                                                        width: '713px',
-                                                                        height: '240px',
-                                                                        marginTop: '20px'
-                                                                    };
+export const containerStyle = {
+    width: '713px',
+    height: '240px',
+    marginTop: '20px'
+};
+
+/*matchMedia("(max-width: 600px)") {
+        width: '88vw',
+        height: '240px',
+        marginTop: '20px',
+        marginLeft: '2vw'
+    }*/
