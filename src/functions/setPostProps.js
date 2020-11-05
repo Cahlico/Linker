@@ -1,7 +1,7 @@
 import React from 'react';
 import PostBox from '../components/PostBox';
 
-export function render(posts, items) {
+export function setPostProps(posts, items) {
     
     if(posts.length === 0) return;
 

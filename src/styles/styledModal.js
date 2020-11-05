@@ -49,6 +49,14 @@ export const DeleteScreen = styled.div`
         }
     }
 
+    button:hover {
+        background-color: #d4d6d9;
+
+        &.delete{
+            background-color: #5db0cf;
+        }
+    }
+
     @media(max-width: 600px) {
         width: 90vw;
         height: 38vh;
@@ -98,10 +106,3 @@ function getContainerStyle() {
 };
 
 export const containerStyle = getContainerStyle();
-
-/*matchMedia("(max-width: 600px)") {
-        width: '88vw',
-        height: '240px',
-        marginTop: '20px',
-        marginLeft: '2vw'
-}*/

@@ -20,7 +20,6 @@ export default function PostBox(props) {
     const { id, username, avatar } = user;
     const [postText, setPostText] = useState(text);
     const [ edit, setEdit ] = useState(false);
-    const [ isyoutubeLink, setIsYoutubeLink ] = useState(false);
     const history = useHistory();
 
     function goToHashtagPage(hashtagValue) {
