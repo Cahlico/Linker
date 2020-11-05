@@ -65,6 +65,11 @@ export const PostContainer = styled.div`
             color: #f0293d;
         }
 
+        &.edit {
+            color: #fce63a;
+            margin-right: 7px;
+        }
+
         &.locationPin {
             font-size: 20px;
             margin-left: 10px;

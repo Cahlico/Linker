@@ -40,6 +40,22 @@ export const DeleteScreen = styled.div`
         width: 20%;
         margin-right: 20px;
         margin-top: 10px;
+        background-color: #FFF;
+        color: #3091b8;
+
+        &.delete {
+            color: #FFF;
+            background-color: #3091b8;
+        }
+    }
+
+    @media(max-width: 600px) {
+        width: 90vw;
+        height: 38vh;
+        
+         button {
+             width: 30%;
+         }
     }
 `;
 
@@ -52,8 +68,17 @@ export const Load = styled.img`
     }
 `;
 
-export const  containerStyle = {
-    width: '800px',
-    height: '300px',
-    marginTop: '20px'
-};
+export const MapHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    svg {
+        font-size: 40px;
+    }
+`;
+
+export const containerStyle = {
+    width: '713px',
+    height: '240px',
+    marginTop: '20px',
+}

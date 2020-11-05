@@ -44,7 +44,7 @@ export default function Header(props) {
 
     function resetInput() {
         setFocus(false);
-        setSearchedUsers([])
+        setTimout(() => setSearchedUsers([]), 300);
     }
 
     return (

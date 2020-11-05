@@ -1,9 +1,9 @@
-import React, { useState, useCallback  } from 'react';
-import { IoIosPin } from 'react-icons/io';
+import React, { useState  } from 'react';
+import { IoIosPin, IoIosClose } from 'react-icons/io';
 import Modal from 'react-modal';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-import { modalStyles, containerStyle } from '../styles/styledModal';
+import { modalStyles, containerStyle, MapHeader } from '../styles/styledModal';
 import { openModal, closeModal } from '../functions/modal';
 
 export default function LocationMap(props) {
@@ -12,6 +12,7 @@ export default function LocationMap(props) {
     let latitude, longitude;
     const [modalIsOpen, setIsOpen] = useState(false);
     const apiKey = 'AIzaSyDOztJhF_njfFybGT7LPA_eQszwINkqofI';
+    const [ isShown, setIsShown ] = useState(true);
 
     if(props.geolocation !== undefined) {
         latitude = props.geolocation.latitude;
@@ -33,14 +34,17 @@ export default function LocationMap(props) {
                 <LoadScript
                     googleMapsApiKey={apiKey}
                 >
-                    <h4>{username}'s location</h4>
+                    <MapHeader>
+                        <h4>{username}'s location</h4>
+                        <IoIosClose onClick={() => setIsOpen(false)} />
+                    </MapHeader>
                     <GoogleMap
                         mapContainerStyle={containerStyle}
                         center={myCoodinates}
                         zoom={14}
-                        mapTypeId={'7259de476ea759fa'}
+                        
                     >
-                        <IoIosPin />
+                        {isShown ? <Marker position={myCoodinates} onClick={() => setIsShown(false)} /> : ''}
                     </GoogleMap>
                 </LoadScript>
             </Modal>
