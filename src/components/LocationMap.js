@@ -38,8 +38,9 @@ export default function LocationMap(props) {
                         mapContainerStyle={containerStyle}
                         center={myCoodinates}
                         zoom={14}
-                        
+                        mapTypeId={'7259de476ea759fa'}
                     >
+                        <IoIosPin />
                     </GoogleMap>
                 </LoadScript>
             </Modal>
