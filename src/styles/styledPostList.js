@@ -4,6 +4,7 @@ export const WarningMessage = styled.h4`
     text-align: center;
     font-size: 56px;
     color: #FFF;
+    width: 60%;
 `;
 
 export const Load = styled.img`

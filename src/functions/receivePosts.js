@@ -2,10 +2,12 @@ export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMo
     let resp = [];
     let nextPost = { id: null };
     let findEqual;
+    
     response.data.posts.forEach((post,i) => {
         if(i<10) resp.push(post);
         else nextPost = post;
     })
+
     resp = resp.filter(post=> {
         findEqual = posts.find(p=>{
             return p.id === post.id;

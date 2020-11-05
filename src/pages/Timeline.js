@@ -31,7 +31,7 @@ export default function Timeline() {
                 <TrendingTopics 
                 userData = {userData} 
                 />
-                <PostList userData={userData} id={null} />
+                <PostList userData={userData} id={null} timeline = {true}/>
             </MainContainer>
             
         </>

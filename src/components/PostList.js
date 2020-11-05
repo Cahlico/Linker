@@ -12,17 +12,19 @@ export default function PostList(props) {
 
     const { myPost, setMyPost } = useContext(UserContext);
     const { refresh, setRefresh } = useContext(RefreshContext);
-    const { userData, id, hashtag, liked } = props;
+    const { userData, id, hashtag, liked, timeline } = props;
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     let items = []
     const [offset, setOffset] = useState(0);
     const [more, setMore] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("Houve uma falha ao obter os posts, por favor atualize a página")
+    const [timer, setTimer] = useState(1);
 
     useEffect(() => {
 
-        const request = getPostsFromServer(id, liked, hashtag, userData, offset);
+        const request = getPostsFromServer(id, liked, hashtag, userData, offset, setError, setErrorMsg);
 
         request.then(response => {
             setLoading(false);
@@ -30,8 +32,12 @@ export default function PostList(props) {
         });
 
         request.catch(() => setError(true));
+        if(timeline) {
+            const timerId = setInterval(() => setTimer(timer + 1), 15000);
+            return () => clearInterval(timerId);
+        }
         
-    }, [refresh]);
+    }, [refresh,timer]);
 
     render(posts, items);
 
@@ -46,7 +52,7 @@ export default function PostList(props) {
         <>
             {!loading
                 ? error
-                    ? <WarningMessage>Houve uma falha ao obter os posts, por favor atualize a página</WarningMessage>
+                    ? <WarningMessage> {errorMsg} </WarningMessage>
                     : posts.length === 0
                         ? <WarningMessage>Nenhum post encontrado</WarningMessage>
                         : <InfiniteScroll
