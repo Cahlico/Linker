@@ -26,10 +26,7 @@ export default function PostBox(props) {
     function goToHashtagPage(hashtagValue) {
         hashtagValue = hashtagValue.slice(1);
         history.push(`/HashtagPage:${hashtagValue}`, hashtagValue);
-    }
-
-     console.log(link,link.includes("https://www.youtube.com/"));
-    
+    }    
     
     return (
         <PostContainer>
@@ -76,7 +73,7 @@ export default function PostBox(props) {
                     </p>
                 }
                 {link.includes("https://www.youtube.com/")
-                    ? <YoutubeContainer title={linkTitle} type="text/html" src={`https://www.youtube.com/embed/${getYouTubeID(link)}`} />
+                    ? <YoutubeContainer title={linkTitle} frameBorder="0" allowFullScreen src={`https://www.youtube.com/embed/${getYouTubeID(link)}`} />
                     : <LinkContainer href={link}>
                             <div>
                                 <h4>{linkTitle}</h4>
