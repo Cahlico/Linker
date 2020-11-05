@@ -126,3 +126,15 @@ export const LinkContainer = styled.a`
         height: 15vh;
     }
 `;
+
+export const YoutubeContainer = styled.iframe `
+    width:489.08px;
+    height:155px;
+    margin-top: 10px;
+    border: 2px solid #C4C4C4;
+    border-radius: 11px;
+
+    @media(max-width: 600px) {
+        height: 15vh;
+    }
+`
