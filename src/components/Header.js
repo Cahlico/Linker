@@ -47,6 +47,11 @@ export default function Header(props) {
         setTimout(() => setSearchedUsers([]), 300);
     }
 
+    function dropMenu() {
+        setIsDroped(!isDroped);
+        setSearchedUsers([]);
+    }
+
     return (
         <>
             <HeaderContainer>
@@ -81,7 +86,7 @@ export default function Header(props) {
                         }
                     </UsersContainer>
                 </SearchContainer>
-                <div onClick={() => setIsDroped(!isDroped)} className='show-menu'>
+                <div onClick={() => dropMenu()} className='show-menu'>
                     {isDroped
                         ? <BsChevronUp/>
                         : <BsChevronDown/>

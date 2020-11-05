@@ -38,13 +38,18 @@ export const MainContainer = styled.main `
     }
 
     @media(max-width: 600px) {
-        padding-top: 120px;
+        padding-top: 100px;
         padding-left: 0;
 
         & > span {
             width: 100vw;
-            text-align: center;
-            margin-bottom: 10px;
+            margin: 10px 5px;
+            font-size: 30px;
+            
+            button {
+                margin-right: 5px;
+                margin-top: 5px;
+            }
         }
     }
 `;
