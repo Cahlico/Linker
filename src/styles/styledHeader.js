@@ -54,7 +54,6 @@ export const HeaderContainer = styled.header `
     @media(max-width: 600px) {
         input {
             width: 98vw;
-            text-align: center;
         }
     }
 `;
@@ -107,13 +106,13 @@ export const SearchContainer = styled.div`
         left: 66%;
     }
 
-    @media {
+    @media(max-width: 600px) {
         position: absolute;
-        top: 80px;
+        top: 60px;
         left: 1vw;
 
         & > svg {
-            top: 89px;
+            top: 66px;
             left: 90%;
         }
     }
@@ -152,12 +151,7 @@ export const UsersContainer = styled.div`
         color: #828282;
     }
 
-    @media {
+    @media(max-width: 600px) {
         width: 98vw;
-        text-align: center;
-
-        p {
-            margin-left: 110px;
-        }
     }
 `;
