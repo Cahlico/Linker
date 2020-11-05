@@ -35,6 +35,14 @@ export const MainContainer = styled.main `
                 color: #1877F2;
             }
         }
+
+        button:hover {
+            background-color: #567bcc;
+
+            &.unfollow {
+                background-color: #d4d6d9;
+            }
+        }
     }
 
     @media(max-width: 600px) {
@@ -118,10 +126,19 @@ export const InputContainer = styled.article `
         svg, p {
             margin-top: 8px;
             color: #eb4034;
+            cursor: pointer;
         }
 
         .activated {
             color: #25cc35;
+        }
+
+        svg:hover, p:hover {
+            color: #db3b56;
+
+            &.activated {
+                color: #6fe886;
+            }
         }
     }
 
@@ -138,6 +155,9 @@ export const InputContainer = styled.article `
         outline: none;
         cursor: pointer;
     }
+
+    button:hover {
+        background-color: #567bcc;
 
     @media(max-width: 600px) {
         width: 100vw;

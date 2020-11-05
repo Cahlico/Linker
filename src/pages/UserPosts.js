@@ -46,8 +46,11 @@ export default function UserPosts() {
                     : <span>
                         <h1>{username}'s posts</h1>
                         {isFollowing
-                            ? <button onClick={() => postFollow(clicked, setClicked, id, userData, isFollowing, setIsFollowig)} className='unfollow'>unfollow</button>
-                            : <button onClick={() => postFollow(clicked, setClicked, id, userData, isFollowing, setIsFollowig)}>follow</button>
+                            ? <button onClick={() => postFollow(clicked, setClicked, id, userData, isFollowing, setIsFollowig)} 
+                            className='unfollow'
+                            disabled={clicked}>unfollow</button>
+                            : <button onClick={() => postFollow(clicked, setClicked, id, userData, isFollowing, setIsFollowig)}
+                            disabled={clicked}>follow</button>
                         }
                     </span>
                 }

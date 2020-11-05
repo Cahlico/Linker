@@ -74,7 +74,7 @@ export default function SignUp() {
                     value={pictureUrl} 
                     placeholder='picture url'
                 />
-                <button type='submit'>Log In</button>
+                <button type='submit' disabled={clicked} >Log In</button>
                 <Link to='/Login' >Switch back to log in</Link>
             </LoginInfo>
         </Container>

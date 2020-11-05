@@ -11,6 +11,14 @@ export const PostContainer = styled.div`
     position: relative;
     overflow-wrap: anywhere;
 
+    &>a {
+        width:53px;
+        height:53px;
+        border-radius:50%;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
     div > div {
         display: flex;
         justify-content: space-between;
@@ -65,9 +73,17 @@ export const PostContainer = styled.div`
             color: #f0293d;
         }
 
+        &.redColored:hover {
+            color: #db3b56;
+        }
+
         &.edit {
             color: #fce63a;
             margin-right: 7px;
+        }
+
+        &.edit:hover {
+            color: #e8dd68;
         }
 
         &.locationPin {
@@ -128,8 +144,8 @@ export const LinkContainer = styled.a`
 `;
 
 export const YoutubeContainer = styled.iframe `
-    width:489.08px;
-    height:155px;
+    width:700.00px;
+    height:205px;
     margin-top: 10px;
     border: 2px solid #C4C4C4;
     border-radius: 11px;
