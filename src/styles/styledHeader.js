@@ -54,6 +54,7 @@ export const HeaderContainer = styled.header `
     @media(max-width: 600px) {
         input {
             width: 98vw;
+            z-index: -10;
         }
     }
 `;
@@ -93,6 +94,11 @@ export const Menu = styled.div `
         margin-top: 2px;
         cursor: pointer;
     }
+
+    @media(max-width: 600px) {
+        right: 0;
+        top: ${props=>props.isDroped?"103px":"-34px"};
+    }
 `;
 
 export const SearchContainer = styled.div`
@@ -108,11 +114,11 @@ export const SearchContainer = styled.div`
 
     @media(max-width: 600px) {
         position: absolute;
-        top: 60px;
+        top: 70px;
         left: 1vw;
 
         & > svg {
-            top: 66px;
+            top: 76px;
             left: 90%;
         }
     }
@@ -132,7 +138,7 @@ export const UsersContainer = styled.div`
     a {
         display: block;
         margin-bottom: 20px;
-        z-index: 10;
+        z-index: 9;
     }
 
     img, p span {

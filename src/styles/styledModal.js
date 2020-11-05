@@ -77,15 +77,31 @@ export const MapHeader = styled.div`
     }
 `;
 
-export const containerStyle = {
-    width: '713px',
-    height: '240px',
-    marginTop: '20px'
+function getContainerStyle() {
+
+    let style = { 
+        width: '713px',
+        height: '240px',
+        marginTop: '20px'
+    };
+
+    if(matchMedia("(max-width: 600px)").matches) {
+        style = {
+            width: '88vw',
+            height: '240px',
+            marginTop: '20px',
+            marginLeft: '2vw'
+        };
+    }
+
+    return style;
 };
+
+export const containerStyle = getContainerStyle();
 
 /*matchMedia("(max-width: 600px)") {
         width: '88vw',
         height: '240px',
         marginTop: '20px',
         marginLeft: '2vw'
-    }*/
+}*/

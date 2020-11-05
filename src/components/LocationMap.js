@@ -12,7 +12,6 @@ export default function LocationMap(props) {
     const { username } = props;
     let latitude, longitude;
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [ isShown, setIsShown ] = useState(true);
     if(props.geolocation !== undefined) {
         latitude = props.geolocation.latitude;
         longitude = props.geolocation.longitude
@@ -42,7 +41,7 @@ export default function LocationMap(props) {
                         center={myCoodinates}
                         zoom={14}
                     >
-                        {isShown ? <Marker position={myCoodinates} onClick={() => setIsShown(false)} /> : ''}
+                        <Marker draggable={true} position={myCoodinates} />
                     </GoogleMap>
                 </LoadScript>
             </Modal>
