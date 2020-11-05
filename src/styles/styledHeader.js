@@ -50,6 +50,12 @@ export const HeaderContainer = styled.header `
         cursor: pointer;
         font-size: 25px;
     }
+
+    @media(max-width: 600px) {
+        input {
+            width: 98vw;
+        }
+    }
 `;
 
 export const Menu = styled.div `
@@ -99,6 +105,17 @@ export const SearchContainer = styled.div`
         top: 19px;
         left: 66%;
     }
+
+    @media(max-width: 600px) {
+        position: absolute;
+        top: 60px;
+        left: 1vw;
+
+        & > svg {
+            top: 66px;
+            left: 90%;
+        }
+    }
 `;
 
 export const UsersContainer = styled.div`
@@ -132,5 +149,9 @@ export const UsersContainer = styled.div`
     span {
         margin-top: -48px;
         color: #828282;
+    }
+
+    @media(max-width: 600px) {
+        width: 98vw;
     }
 `;

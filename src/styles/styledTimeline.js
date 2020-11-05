@@ -38,7 +38,7 @@ export const MainContainer = styled.main `
     }
 
     @media(max-width: 600px) {
-        padding-top: 60px;
+        padding-top: 120px;
         padding-left: 0;
 
         & > span {

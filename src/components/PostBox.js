@@ -47,7 +47,7 @@ export default function PostBox(props) {
                         {
                             myId === id
                                 ? <>
-                                    <FiEdit onClick={() => setEdit(!edit)} />
+                                    <FiEdit onClick={() => setEdit(!edit)} className='edit' />
                                     <Delete postId={postId} />
                                 </>
                                 : ''
