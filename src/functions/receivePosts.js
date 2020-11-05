@@ -4,7 +4,7 @@ export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMo
     let findEqual;
     
     response.data.posts.forEach((post,i) => {
-        if(i<10) resp.push(post);
+        if( i < 10 ) resp.push(post);
         else nextPost = post;
     })
 

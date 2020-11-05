@@ -41,10 +41,10 @@ export default function Edit (props) {
     return (
         <textarea 
         value={inputText}
-        onChange={e=>setInputText(e.target.value)} 
+        onChange={e => setInputText(e.target.value)} 
         autoFocus={true}
-        onFocus={e=>setInputText(e.target.defaultValue + " ")}
-        onKeyDown={e=>keyPressed(e)}
+        onFocus={e => setInputText(e.target.defaultValue + " ")}
+        onKeyDown={e => keyPressed(e)}
         disabled={disable}               
         />
     )  

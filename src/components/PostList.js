@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 import UserContext from '../contexts/UserContext';
 import { receivePosts } from '../functions/receivePosts';
-import { render } from '../functions/render';
+import { postList } from '../functions/postList';
 import { getPostsFromServer } from '../functions/getPostsFromServer';
 import { WarningMessage, Load } from '../styles/styledPostList';
 import RefreshContext from '../contexts/RefreshContext';
@@ -39,7 +39,7 @@ export default function PostList(props) {
         
     }, [refresh,timer]);
 
-    render(posts, items);
+    postList(posts, items);
 
     function load() {
         if(posts.length<10) return;
