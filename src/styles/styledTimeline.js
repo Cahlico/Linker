@@ -160,10 +160,11 @@ export const InputContainer = styled.article `
         background-color: #567bcc;
     }
 
-    @media(max-width: 600px) {
-        width: 100vw;
-        border-radius: 2px;
-        margin-bottom: 0px;
+        @media(max-width: 600px) {
+            width: 100vw;
+            border-radius: 2px;
+            margin-bottom: 0px;
+        }
     }
 `;
 

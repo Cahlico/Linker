@@ -26,7 +26,7 @@ export default function TrendingTopics(props) {
     function searchHashtag(event) {
         event.preventDefault();
 
-        if(search==='') {
+        if( search === '') {
             alert("Preencha o campo com um assunto");
         }
         else {
