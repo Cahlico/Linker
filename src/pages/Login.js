@@ -63,7 +63,11 @@ export default function Login() {
                     value={password} 
                     placeholder='password'
                 />
-                <button type='submit' disabled={clicked} >Log In</button>
+                {clicked 
+                    ? <img src='https://avancar.gov.br/avancar-web/images/loading.gif' />
+                    : <button type='submit' >Log In</button>
+                }
+                
                 <Link to='/SignUp' >First time? Create an account!</Link>
             </LoginInfo>
         </Container>

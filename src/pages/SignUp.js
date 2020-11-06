@@ -74,7 +74,10 @@ export default function SignUp() {
                     value={pictureUrl} 
                     placeholder='picture url'
                 />
-                <button type='submit' disabled={clicked} >Log In</button>
+                {clicked 
+                    ? <img src='https://avancar.gov.br/avancar-web/images/loading.gif' />
+                    : <button type='submit' >Log In</button>
+                }
                 <Link to='/Login' >Switch back to log in</Link>
             </LoginInfo>
         </Container>

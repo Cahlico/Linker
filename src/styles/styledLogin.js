@@ -76,6 +76,10 @@ export const LoginInfo = styled.form`
         display: block;
     }
 
+    img {
+        width: 80%;
+    }
+
     @media (max-width: 600px) {
         height: 65vw;
         padding: 10vw 5vw;
