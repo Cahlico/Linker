@@ -37,7 +37,7 @@ export const MainContainer = styled.main `
         }
 
         button:hover {
-            background-color: #567bcc;
+            background-color: #5db0cf;
 
             &.unfollow {
                 background-color: #d4d6d9;
@@ -158,6 +158,7 @@ export const InputContainer = styled.article `
 
     button:hover {
         background-color: #567bcc;
+    }
 
         @media(max-width: 600px) {
             width: 100vw;

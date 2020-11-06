@@ -144,8 +144,8 @@ export const LinkContainer = styled.a`
 `;
 
 export const YoutubeContainer = styled.iframe `
-    width:700.00px;
-    height:205px;
+    width: 38vw;
+    height: 250px;
     margin-top: 10px;
     border: 2px solid #C4C4C4;
     border-radius: 11px;

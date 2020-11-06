@@ -16,10 +16,10 @@ export default function PostList(props) {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    let items = []
+    let items = [];
     const [offset, setOffset] = useState(0);
     const [more, setMore] = useState(false);
-    const [errorMsg, setErrorMsg] = useState("Houve uma falha ao obter os posts, por favor atualize a página")
+    const [errorMsg, setErrorMsg] = useState("Houve uma falha ao obter os posts, por favor atualize a página");
     const [timer, setTimer] = useState(1);
 
     useEffect(() => {
@@ -29,6 +29,7 @@ export default function PostList(props) {
         request.then(response => {
             setLoading(false);
             receivePosts(response, setPosts, posts, myPost, setMyPost, setMore);
+            console.log(response.data.posts)
         });
 
         request.catch(() => setError(true));
@@ -39,7 +40,7 @@ export default function PostList(props) {
         
     }, [refresh,timer]);
 
-    postList(posts, items);
+    postList(posts, setPosts, items);
 
     function load() {
         if(posts.length<10) return;
