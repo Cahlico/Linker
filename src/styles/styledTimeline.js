@@ -180,6 +180,7 @@ export const TrendContainer = styled.aside `
     padding: 15px 20px;
     display:flex;
     flex-direction:column;
+    overflow: hidden;
     align-items:center;
 
     h1 {

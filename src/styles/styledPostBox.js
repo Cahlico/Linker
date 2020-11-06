@@ -152,5 +152,6 @@ export const YoutubeContainer = styled.iframe `
 
     @media(max-width: 600px) {
         height: 15vh;
+        width: 70vw;
     }
 `
