@@ -1,4 +1,4 @@
-export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMore) {
+export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMore, id) {
     let resp = [];
     let nextPost = { id: null };
     let findEqual;
@@ -10,18 +10,19 @@ export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMo
 
     resp = resp.filter(post=> {
         findEqual = posts.find( p => {
-            return p.id === post.id;
+            if(p.id === post.id) {
+                return true;
+            }
         });
         if(findEqual) return false;
         else return true;
     });
 
-    let ordPosts = [...posts, ...resp];
+    let ordPosts = [...resp, ...posts];
 
     for (let i = 0; i < ordPosts.length - 1; i++) {
         for (let j = i; j < ordPosts.length - 1; j++) {
             if(ordPosts[i].id < ordPosts[j].id) {
-                console.log('aq')
                 let aux = ordPosts[i];
                 ordPosts[i] = ordPosts[j];
                 ordPosts[j] = aux;
@@ -29,10 +30,7 @@ export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMo
         }
     }
 
-    if(myPost) {
-        setPosts([...resp, ...posts]);
-        setMyPost(false);
-    } else setPosts([...ordPosts]);
+    setPosts(ordPosts);
 
     if(nextPost.id === null) return;
     setMore(true);
