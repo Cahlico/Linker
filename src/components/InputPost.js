@@ -9,7 +9,6 @@ import { getLocation } from '../functions/getLocation';
 
 export default function InputPost(props) {
     const { token, user } = props.userData;
-    const { setMyPost } = useContext(UserContext);
     const { refresh, setRefresh } = useContext(RefreshContext);
     const [link,setLink] = useState('');
     const [text,setText] = useState('');
@@ -37,7 +36,6 @@ export default function InputPost(props) {
             setLabel('Publicar');
             setLink('');
             setText('');
-            setMyPost(true);
             setRefresh(!refresh);
         });
 

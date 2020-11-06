@@ -44,7 +44,7 @@ export default function Header(props) {
 
     function resetInput() {
         setFocus(false);
-        setTimout(() => setSearchedUsers([]), 300);
+        setTimeout(() => setSearchedUsers([]), 300);
     }
 
     function dropMenu() {

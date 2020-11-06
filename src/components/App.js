@@ -9,10 +9,9 @@ export default function App() {
     const localData = localStorage.data !== undefined ? JSON.parse(localStorage.data) : {};
     const [userInfo, setUserInfo] = useState(localData);
     const [refresh, setRefresh] = useState(false);
-    const [myPost, setMyPost] = useState(false);
 
     return (
-        <UserContext.Provider value={{ userInfo, setUserInfo, myPost, setMyPost }}>
+        <UserContext.Provider value={{ userInfo, setUserInfo }}>
             <RefreshContext.Provider value={{ refresh, setRefresh }}>
                 <Router>
                     <AnimatedSwitch />

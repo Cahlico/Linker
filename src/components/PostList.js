@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 
-import UserContext from '../contexts/UserContext';
 import { receivePosts } from '../functions/receivePosts';
 import { postList } from '../functions/postList';
 import { getPostsFromServer } from '../functions/getPostsFromServer';
@@ -10,10 +9,9 @@ import RefreshContext from '../contexts/RefreshContext';
 
 export default function PostList(props) {
 
-    const { myPost, setMyPost } = useContext(UserContext);
     const { refresh, setRefresh } = useContext(RefreshContext);
     const { userData, id, hashtag, liked, timeline } = props;
-    const [ posts, setPosts ] = useState([]);
+    let [ posts, setPosts ] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     let items = [];
@@ -28,7 +26,7 @@ export default function PostList(props) {
 
         request.then(response => {
             setLoading(false);
-            receivePosts(response, setPosts, posts, myPost, setMyPost, setMore, id);
+            receivePosts(response, setPosts, posts, setMore);
         });
 
         request.catch(() => setError(true));

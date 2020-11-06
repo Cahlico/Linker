@@ -1,4 +1,4 @@
-export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMore, id) {
+export function receivePosts(response, setPosts, posts, setMore) {
     let resp = [];
     let nextPost = { id: null };
     let findEqual;
@@ -20,8 +20,8 @@ export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMo
 
     let ordPosts = [...resp, ...posts];
 
-    for (let i = 0; i < ordPosts.length - 1; i++) {
-        for (let j = i; j < ordPosts.length - 1; j++) {
+    for (let i = 0; i < ordPosts.length; i++) {
+        for (let j = i; j < ordPosts.length; j++) {
             if(ordPosts[i].id < ordPosts[j].id) {
                 let aux = ordPosts[i];
                 ordPosts[i] = ordPosts[j];
@@ -30,7 +30,7 @@ export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMo
         }
     }
 
-    setPosts(ordPosts);
+    setPosts([...ordPosts]);
 
     if(nextPost.id === null) return;
     setMore(true);
