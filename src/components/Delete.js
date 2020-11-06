@@ -11,7 +11,7 @@ import { openModal, closeModal } from '../functions/modal';
 export default function Delete(props) {
 
     const [modalIsOpen, setIsOpen] = useState(false);
-    const { postId } = props
+    const { postId, posts, setPosts } = props
     const [loading, setLoading] = useState(false);
     const { userInfo } = useContext(UserContext);
     const { refresh, setRefresh } = useContext(RefreshContext);
@@ -24,6 +24,8 @@ export default function Delete(props) {
         request.then(() => {
             setIsOpen(false);
             setLoading(false);
+            const filteredPosts = posts.filter(e => e.id !== postId);
+            setPosts([...filteredPosts]);
             setRefresh(!refresh);
         });
 
