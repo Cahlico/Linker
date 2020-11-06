@@ -16,18 +16,23 @@ export function receivePosts(response, setPosts, posts, myPost, setMyPost, setMo
         else return true;
     });
 
-    /*let allPosts = [...posts, ...resp];
-    let ordPosts = [];
-    console.log(allPosts)
+    let ordPosts = [...posts, ...resp];
 
-    setPosts([...ordPosts]);*/
+    for (let i = 0; i < ordPosts.length - 1; i++) {
+        for (let j = i; j < ordPosts.length - 1; j++) {
+            if(ordPosts[i].id < ordPosts[j].id) {
+                console.log('aq')
+                let aux = ordPosts[i];
+                ordPosts[i] = ordPosts[j];
+                ordPosts[j] = aux;
+            }
+        }
+    }
 
     if(myPost) {
-        setPosts([...resp,...posts]);
+        setPosts([...resp, ...posts]);
         setMyPost(false);
-    } else {
-        setPosts([...posts,...resp]);
-    }
+    } else setPosts([...ordPosts]);
 
     if(nextPost.id === null) return;
     setMore(true);

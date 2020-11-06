@@ -7,13 +7,14 @@ import { postList } from '../functions/postList';
 import { getPostsFromServer } from '../functions/getPostsFromServer';
 import { WarningMessage, Load } from '../styles/styledPostList';
 import RefreshContext from '../contexts/RefreshContext';
+import PostsContext from '../contexts/PostsContext';
 
 export default function PostList(props) {
 
     const { myPost, setMyPost } = useContext(UserContext);
     const { refresh, setRefresh } = useContext(RefreshContext);
     const { userData, id, hashtag, liked, timeline } = props;
-    const [posts, setPosts] = useState([]);
+    const { posts, setPosts } = useContext(PostsContext);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     let items = [];
@@ -29,7 +30,6 @@ export default function PostList(props) {
         request.then(response => {
             setLoading(false);
             receivePosts(response, setPosts, posts, myPost, setMyPost, setMore);
-            console.log(response.data.posts)
         });
 
         request.catch(() => setError(true));
@@ -40,7 +40,7 @@ export default function PostList(props) {
         
     }, [refresh,timer]);
 
-    postList(posts, setPosts, items);
+    postList(posts, items);
 
     function load() {
         if(posts.length<10) return;

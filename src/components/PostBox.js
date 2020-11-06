@@ -16,7 +16,7 @@ export default function PostBox(props) {
     const { userInfo } = useContext(UserContext);
     const userData = userInfo.data;
     const myId = userData.user.id;
-    const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes, geolocation, posts, setPosts } = props;
+    const { imgSrc, link, linkDescription, linkTitle, text, user, postId, postLikes, geolocation } = props;
     const { id, username, avatar } = user;
     const [postText, setPostText] = useState(text);
     const [ edit, setEdit ] = useState(false);
@@ -49,7 +49,7 @@ export default function PostBox(props) {
                             myId === id
                                 ? <>
                                     <FiEdit onClick={() => setEdit(!edit)} className='edit' />
-                                    <Delete postId={postId} posts={posts} setPosts={setPosts} />
+                                    <Delete postId={postId} />
                                 </>
                                 : ''
                         }

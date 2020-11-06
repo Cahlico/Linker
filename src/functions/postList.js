@@ -1,7 +1,7 @@
 import React from 'react';
 import PostBox from '../components/PostBox';
 
-export function postList(posts, setPosts, items) {
+export function postList(posts, items) {
     
     if(posts.length === 0) return;
 
@@ -17,8 +17,6 @@ export function postList(posts, setPosts, items) {
                 postId={post.id}
                 postLikes={post.likes}
                 geolocation={post.geolocation}
-                posts={posts}
-                setPosts={setPosts}
                 key={post.id}
             />
         );

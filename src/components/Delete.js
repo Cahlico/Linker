@@ -7,11 +7,13 @@ import { modalStyles, DeleteScreen, Load } from '../styles/styledModal';
 import UserContext from '../contexts/UserContext';
 import RefreshContext from '../contexts/RefreshContext';
 import { openModal, closeModal } from '../functions/modal';
+import PostsContext from '../contexts/PostsContext';
 
 export default function Delete(props) {
 
     const [modalIsOpen, setIsOpen] = useState(false);
-    const { postId, posts, setPosts } = props
+    const { postId } = props;
+    const { posts, setPosts } = useContext(PostsContext);
     const [loading, setLoading] = useState(false);
     const { userInfo } = useContext(UserContext);
     const { refresh, setRefresh } = useContext(RefreshContext);
