@@ -1,7 +1,7 @@
 # Linker
 
 <p align="center">
-  <img src="https://w7.pngwing.com/pngs/573/30/png-transparent-silhouette-of-chain-illustration-computer-icons-iconfinder-hyperlink-black-link-icon-miscellaneous-text-logo.png" width="175" alt="Linkdr" />
+  <img src="https://static.vecteezy.com/system/resources/previews/001/218/821/non_2x/chain-link-icon-on-green-circle-graphic-illustration-vector.jpg" width="175" alt="Linkdr" />
 </p>
 
 ## Objective
