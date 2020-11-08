@@ -1,7 +1,7 @@
 # Linker
 
 <p align="center">
-  <img src="https://static.vecteezy.com/system/resources/previews/001/218/821/non_2x/chain-link-icon-on-green-circle-graphic-illustration-vector.jpg" width="175" alt="Linkdr" />
+  <img src="https://martensambulance.com/wp-content/uploads/Link-icon.jpg" width="175" alt="Linkdr" />
 </p>
 
 ## Objective
@@ -51,6 +51,7 @@ The following tools and frameworks were used in the construction of the project:
 <br>
 <sub><b>Responde Aí</b></sub>
 </a>
+<br>
 ### Author
 ---
 Carlos Augusto de Lima Coutinho.
