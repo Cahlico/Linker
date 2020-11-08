@@ -54,6 +54,7 @@ The following tools and frameworks were used in the construction of the project:
 <br>
 ### Author
 ---
+<br>
 Carlos Augusto de Lima Coutinho.
 <p>Carlos Medias:</p>
 <a href="https://www.linkedin.com/in/carlos-augusto-18aa88186/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
