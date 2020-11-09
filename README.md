@@ -1,4 +1,4 @@
-# Linker
+# Linkr
 
 <p align="center">
   <img src="https://martensambulance.com/wp-content/uploads/Link-icon.jpg" width="175" alt="Linkdr" />
